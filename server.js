@@ -24,12 +24,11 @@ var actions = cif.addActions(rawActions);
 var rawHistory = cif.loadFile("data/history.json");
 var history = cif.addHistory(rawHistory);
 
-var storedVolitions = cif.calculateVolition(cast);
 
-console.log(storedVolitions)
 
 app.get('/getActions', function (req, res) {
-    res.end(possibleActions)
+    var storedVolitions = cif.calculateVolition(cast);
+    res.end(JSON.stringify(cif.getAllActions()))
 })
 
 app.post('/performActions', function (req, res) {

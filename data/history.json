@@ -7,7 +7,13 @@
           "class": "attribute",
           "type": "health",
           "first": "hero",
-          "value": 100
+          "value": 50
+        },
+        {
+          "class": "attribute",
+          "type": "stamina",
+          "first": "hero",
+          "value": 50
         }
       ]
     }

@@ -634,6 +634,7 @@
         getRegisteredDirection: sfdb.getRegisteredDirection,
         getAction: actionLibrary.getAction,
         getActions: actionLibrary.getActions,
+        getAllActions: actionLibrary.getAllActions,
         addActions: actionLibrary.parseActions,
         addHistory: sfdb.addHistory,
 
