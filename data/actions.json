@@ -1,0 +1,350 @@
+{
+	"fileName" : "actions.json",
+	"actions" : [
+		{
+			"name" : "REPAIRO2",
+			"conditions" : [
+				{
+					"class": "feeling",
+					"type": "healthWorry",
+					"first": "hero",
+					"operator": "=",
+					"value": 100
+				},
+				{
+					"class": "feeling",
+					"type": "staminaWorry",
+					"first": "hero",
+					"operator": "<",
+					"value": 50
+				},
+				{
+					"class": "feeling",
+					"type": "suspicion",
+					"first": "hero",
+					"operator": "<",
+					"value": 50
+				},
+				{
+					"class": "attribute",
+					"type": "health",
+					"first": "hero",
+					"operator": ">",
+					"value": -1
+				},
+				{
+					"class": "attribute",
+					"type": "stamina",
+					"first": "hero",
+					"operator": ">",
+					"value": -1
+				}
+			],
+			"displayName" : "Repair O2",
+			"influenceRules" : [],
+			"effects" : [
+				{
+					"class" : "attribute",
+					"type" : "health",
+					"first" : "hero",
+					"operator" : "+",
+					"value" : 100
+				},
+				{
+					"class" : "feeling",
+					"type" : "healthWorry",
+					"first" : "hero",
+					"operator" : "=",
+					"value" : -500
+				}
+			]
+		},
+		{
+			"name" : "FINDSUPPLIES",
+			"conditions" : [
+				{
+					"class": "feeling",
+					"type": "healthWorry",
+					"first": "hero",
+					"operator": "<",
+					"value": 50
+				},
+				{
+					"class": "feeling",
+					"type": "staminaWorry",
+					"first": "hero",
+					"operator": "=",
+					"value": 100
+				},
+				{
+					"class": "feeling",
+					"type": "suspicion",
+					"first": "hero",
+					"operator": "<",
+					"value": 50
+				},
+				{
+					"class": "attribute",
+					"type": "health",
+					"first": "hero",
+					"operator": ">",
+					"value": -1
+				},
+				{
+					"class": "attribute",
+					"type": "stamina",
+					"first": "hero",
+					"operator": ">",
+					"value": -1
+				}
+			],
+			"displayName" : "Find Supplies",
+			"influenceRules" : [],
+			"effects" : [
+				{
+					"class" : "attribute",
+					"type" : "stamina",
+					"first" : "hero",
+					"operator" : "+",
+					"value" : 100
+				},
+				{
+					"class" : "feeling",
+					"type" : "staminaWorry",
+					"first" : "hero",
+					"operator" : "=",
+					"value" : -500
+				}
+			]
+		},
+		{
+			"name" : "FINDSUSPECTCORRECT",
+			"displayName" : "Correct suspect found",
+			"conditions" : [
+				{
+					"class": "feeling",
+					"type": "confidence",
+					"first": "hero",
+					"operator": "=",
+					"value": 100
+				},
+				{
+					"class": "feeling",
+					"type": "healthWorry",
+					"first": "hero",
+					"operator": "<",
+					"value": 50
+				},
+				{
+					"class": "feeling",
+					"type": "staminaWorry",
+					"first": "hero",
+					"operator": "<",
+					"value": 50
+				},
+				{
+					"class": "feeling",
+					"type": "suspicion",
+					"first": "hero",
+					"operator": "=",
+					"value": 100
+				},
+				{
+					"class": "attribute",
+					"type": "health",
+					"first": "hero",
+					"operator": ">",
+					"value": -1
+				},
+				{
+					"class": "attribute",
+					"type": "stamina",
+					"first": "hero",
+					"operator": ">",
+					"value": -1
+				}
+			],
+			"influenceRules" : [],
+			"isAccept" : true,
+			"effects" : [
+				{
+					"class" : "feeling",
+					"type" : "suspicion",
+					"first" : "hero",
+					"operator" : "=",
+					"value" : -500
+				}
+			]
+		},
+		{
+			"name" : "FINDSUSPECTWRONG",
+			"displayName" : "Wrong suspect found",
+			"conditions" : [
+				{
+					"class": "feeling",
+					"type": "healthWorry",
+					"first": "hero",
+					"operator": "<",
+					"value": 50
+				},
+				{
+					"class": "feeling",
+					"type": "staminaWorry",
+					"first": "hero",
+					"operator": "<",
+					"value": 50
+				},
+				{
+					"class": "feeling",
+					"type": "suspicion",
+					"first": "hero",
+					"operator": "<",
+					"value": 100
+				},
+				{
+					"class": "attribute",
+					"type": "health",
+					"first": "hero",
+					"operator": ">",
+					"value": -1
+				},
+				{
+					"class": "attribute",
+					"type": "stamina",
+					"first": "hero",
+					"operator": ">",
+					"value": -1
+				}
+			],
+			"influenceRules" : [],
+			"isAccept" : false,
+			"effects" : []
+		},
+		{
+			"name" : "ANALYZEDATA",
+			"conditions" : [
+				{
+					"class": "feeling",
+					"type": "healthWorry",
+					"first": "hero",
+					"operator": "<",
+					"value": 100
+				},
+				{
+					"class": "feeling",
+					"type": "staminaWorry",
+					"first": "hero",
+					"operator": "<",
+					"value": 100
+				},
+				{
+					"class": "feeling",
+					"type": "suspicion",
+					"first": "hero",
+					"operator": "<",
+					"value": 100
+				},
+				{
+					"class": "attribute",
+					"type": "health",
+					"first": "hero",
+					"operator": ">",
+					"value": -1
+				},
+				{
+					"class": "attribute",
+					"type": "stamina",
+					"first": "hero",
+					"operator": ">",
+					"value": -1
+				}
+			],
+			"displayName" : "Analyze data",
+			"influenceRules" : [],
+			"effects" : [
+				{
+					"class" : "feeling",
+					"type" : "confidence",
+					"first" : "hero",
+					"operator" : "=",
+					"value" : 100
+				}
+			]
+		},
+		{
+			"name" : "DIEHEALTH",
+			"conditions" : [
+				{
+					"class": "attribute",
+					"type": "health",
+					"first": "hero",
+					"operator": "<",
+					"value": 0
+				}
+			],
+			"displayName" : "Die due to lack of health",
+			"influenceRules" : [],
+			"effects" : []
+		},
+		{
+			"name" : "DIESTAMINA",
+			"conditions" : [
+				{
+					"class": "attribute",
+					"type": "stamina",
+					"first": "hero",
+					"operator": "<",
+					"value": 0
+				}
+			],
+			"displayName" : "Die due to lack of stamina",
+			"influenceRules" : [],
+			"effects" : []
+		},
+		{
+			"name" : "WORRYHEALTH",
+			"conditions" : [],
+			"displayName" : "Worry about health",
+			"influenceRules" : [],
+			"effects" : [
+				{
+					"class" : "feeling",
+					"type" : "healthWorry",
+					"first" : "hero",
+					"operator" : "+",
+					"value" : 50
+				}
+			]
+		},
+		{
+			"name" : "WORRYSTAMINA",
+			"conditions" : [],
+			"displayName" : "Worry about stamina",
+			"influenceRules" : [],
+			"effects" : [
+				{
+					"class" : "feeling",
+					"type" : "staminaWorry",
+					"first" : "hero",
+					"operator" : "+",
+					"value" : 50
+				}
+			]
+		},
+		{
+			"name" : "WORRYSUSPICION",
+			"conditions" : [],
+			"displayName" : "Worry about suspicion",
+			"influenceRules" : [],
+			"effects" : [
+				{
+					"class" : "feeling",
+					"type" : "suspicion",
+					"first" : "hero",
+					"operator" : "+",
+					"value" : 50
+				}
+			]
+		}
+	]
+}

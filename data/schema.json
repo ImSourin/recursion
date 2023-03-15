@@ -1,0 +1,25 @@
+{
+	"schema": [
+		{
+			"class" : "attribute",
+			"types" : ["health", "stamina"],
+			"isBoolean" : false,
+			"directionType" : "undirected",
+			"allowIntent" : true,
+			"defaultValue" : 50,
+			"maxValue" : 100,
+			"minValue" : -100
+		},
+		{
+			"class": "feeling",
+			"isBoolean": false,
+			"directionType": "undirected",
+			"types": ["suspicion", "healthWorry", "staminaWorry", "confidence"],
+			"defaultValue": 0,
+			"minValue": 0,
+			"maxValue": 100,
+			"allowIntent": true
+		}
+	]
+}
+

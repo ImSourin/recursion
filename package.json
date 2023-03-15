@@ -1,0 +1,24 @@
+{
+  "name": "recursion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cif.js",
+  "type": "commonjs",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "log": "^6.3.1",
+    "require": "^2.4.20",
+    "test": "^3.3.0",
+    "umdify": "^0.1.0",
+    "underscore": "^1.13.6",
+    "util": "^0.12.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

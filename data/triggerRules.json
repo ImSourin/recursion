@@ -1,0 +1,27 @@
+{
+	"type": "trigger",
+	"rules": [
+		{
+			"name": "Health and Stamina decreases with time",
+			"conditions": [],
+			"effects": [
+				{
+					"class": "attribute",
+					"type": "health",
+					"first": "hero",
+					"value": 50,
+					"operator": "-"
+				},
+				{
+					"class": "attribute",
+					"type": "stamina",
+					"first": "hero",
+					"value": 50,
+					"operator": "-"
+				}
+			],
+			"origin": "triggerRules.json",
+			"id": "trigger_1"
+		}
+	]
+}

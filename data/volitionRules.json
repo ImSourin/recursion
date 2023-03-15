@@ -1,0 +1,30 @@
+{
+	"fileName": "volitionRules",
+	"type": "volition",
+	"rules": [
+		{
+			"name": "Hero wants health and stamina",
+			"conditions": [],
+			"effects": [
+				{
+					"class": "attribute",
+					"type": "health",
+					"first": "hero",
+					"weight": 10,
+					"intentDirection": true,
+					"value": true
+				},
+				{
+					"class": "attribute",
+					"type": "stamina",
+					"first": "hero",
+					"weight": 10,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"origin": "volitionRules",
+			"id": "volitionRules_1"
+		}
+	]
+}

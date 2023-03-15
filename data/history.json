@@ -1,0 +1,15 @@
+{
+  "history": [
+    {
+      "pos": 0,
+      "data": [
+        {
+          "class": "attribute",
+          "type": "health",
+          "first": "hero",
+          "value": 100
+        }
+      ]
+    }
+  ]
+}
