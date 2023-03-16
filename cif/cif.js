@@ -17,7 +17,7 @@
     }
 })(this, function(require) {
 
-    var util = require('util');
+    var util = require('./util.js');
     var _ = require('underscore');
     var ruleLibrary = require('./ruleLibrary.js');
     var actionLibrary = require('./actionLibrary.js');
@@ -159,7 +159,7 @@
             structure[classBlueprint.class] = {};
             for (var j = 0; j < classBlueprint.types.length; j++) {
                 var type = classBlueprint.types[j].toLowerCase();
-                var typeBlueprint = Object.assign({}, classBlueprint);
+                var typeBlueprint = util.clone(classBlueprint);
                 typeBlueprint.type = type;
                 structure[classBlueprint.class][type] = registerSocialType(typeBlueprint);
             }
@@ -308,7 +308,7 @@
      * @return {Object}      A dictionary with the full record of all registered characters.
      */
     var getCharactersWithMetadata = function () {
-        return Object.assign({}, savedChars);
+        return util.clone(savedChars);
     };
 
     /**
@@ -381,7 +381,7 @@
             }
             //Store the 'origin' of this rule, so we'll always be able to know where it came from, and give it a unique ID.
             rule.origin = fileName;
-            var newId = ruleType + "_" + Math.floor(Math.random() * 100);
+            var newId = ruleType + "_" + util.iterator();
             ids.push(newId);
             rule.id = newId;
 

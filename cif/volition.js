@@ -39,7 +39,7 @@
     }
 })(this, function(require) {
 
-    var util = require('util');
+    var util = require('./util.js');
     var _ = require('underscore');
     // var test = require('test');
 

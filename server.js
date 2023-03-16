@@ -1,34 +1,34 @@
 var express = require('express')
 var fs = require('fs')
-var cif = require('./cif.js')
+var cif = require('./cif/cif.js')
 var app = express();
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
 cif.init()
-var rawSchema = cif.loadFile("data/schema.json");
+var rawSchema = JSON.parse(cif.loadFile("data/schema.json"));
 var schema = cif.loadSocialStructure(rawSchema);
 
-var rawCast = cif.loadFile("data/cast.json");
+var rawCast = JSON.parse(cif.loadFile("data/cast.json"));
 var cast = cif.addCharacters(rawCast);
 
-var rawTriggerRules = cif.loadFile("data/triggerRules.json");
+var rawTriggerRules = JSON.parse(cif.loadFile("data/triggerRules.json"));
 var triggerRules = cif.addRules(rawTriggerRules);
 
-var rawVolitionRules = cif.loadFile("data/volitionRules.json");
+var rawVolitionRules = JSON.parse(cif.loadFile("data/volitionRules.json"));
 var volitionRules = cif.addRules(rawVolitionRules);
 
-var rawActions = cif.loadFile("data/actions.json");
+var rawActions = JSON.parse(cif.loadFile("data/actions.json"));
 var actions = cif.addActions(rawActions);
 
-var rawHistory = cif.loadFile("data/history.json");
+var rawHistory = JSON.parse(cif.loadFile("data/history.json"));
 var history = cif.addHistory(rawHistory);
 
 
 
 app.get('/getActions', function (req, res) {
     var storedVolitions = cif.calculateVolition(cast);
-    res.end(JSON.stringify(cif.getAllActions()))
+    res.end(JSON.stringify(cif.getActions("hero", "hero", storedVolitions, cast, 1, 5, 5)));
 })
 
 app.post('/performActions', function (req, res) {

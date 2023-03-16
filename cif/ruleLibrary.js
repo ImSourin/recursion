@@ -21,14 +21,13 @@
     var sfdb = require('./sfdb.js');
     var volition = require('./volition.js');
     var _ = require('underscore');
-    var util = require('util');
+    var util = require('./util.js');
     var log = require('log');
     // var test = require('test');
 
     var ruleLibrary = {
         triggerRules: [], volitionRules: []
     };
-    var iterator = 0;
 
     /**
      * @description Runs a rule set over a cast of characters.
@@ -108,7 +107,7 @@
         // if all of the keys in the uniqueBindings dictionary have an entry
         if (isFilled === true) {
             // then recursion has bottomed out. we have a completely bound set of characters.
-            var boundConditions = doBinding(uniqueBindings, Object.assign({}, rule.conditions));	//characters are assigned
+            var boundConditions = doBinding(uniqueBindings, util.clone(rule.conditions));	//characters are assigned
 
             //Because some characters might be offstage or eliminated, we might not want to
             //bother evaluating this rule. The only way we'll know for sure is by looking
@@ -118,7 +117,7 @@
             //we want to ignore and others we don't. In that case, as long as one effect
             //is good, then we have to evaluate anyway. We'll let the respective
             //rule set handle ignoring the 'bad' effects inside of processResult.
-            var boundEffects = doBinding(uniqueBindings, Object.assign({}, rule.effects));
+            var boundEffects = doBinding(uniqueBindings, util.clone(rule.effects));
             var atLeastOneGoodEffect = false;
             for (var k = 0; k < boundEffects.length; k += 1) {
                 if (boundEffects[k].first !== undefined) {
@@ -149,7 +148,7 @@
 
             // All the conditions are true, so process all effects.
             if (conditionsAreTrue === true) {
-                var boundEffects = doBinding(uniqueBindings, Object.assign({}, rule.effects));
+                var boundEffects = doBinding(uniqueBindings, util.clone(rule.effects));
                 for (var j = 0; j < boundEffects.length; j += 1) {
                     processResult(boundEffects[j], boundConditions, rule, j, boundEffects.length - 1);
                 }
@@ -161,7 +160,7 @@
             // possible assignment for the first unbound slot.
             for (var i = 0; i < availableCastMembers.length; i += 1) {
                 uniqueBindings[emptyKey] = availableCastMembers[i];	// place an available cast member into the empty slot in the dictionary
-                var updatedCastMembers = Object.assign({}, availableCastMembers);
+                var updatedCastMembers = util.clone(availableCastMembers);
                 updatedCastMembers.splice(i, 1);	// the updated cast has the currently assigned member removed for the recursion
                 matchUniqueBindings(uniqueBindings, updatedCastMembers, processResult, rule, params, unaffectedCharacters);
             }
@@ -184,7 +183,7 @@
     /*
     var evaluateConditions = function(conditionsArray, rule, params){
         var orderedConditions = [];
-        var conditions = Object.assign({}, conditionsArray);
+        var conditions = util.clone(conditionsArray);
         var counter = conditions.length;
 
         for (var i = 0 ; i < counter ; i += 1) {
@@ -211,7 +210,7 @@
             // Put the ordered conditions in an ordered array
 
             if(condition.order !== undefined) {
-                var tempCondition = Object.assign({}, condition);
+                var tempCondition = util.clone(condition);
                 if (tempCondition.order === -1){
                     delete tempCondition.order;
                     delete tempCondition.timeEarliest;
@@ -232,7 +231,7 @@
                     }																	// it at time step 6, found it at step 7, so 7-6 gives us an offset of 1
                 }																		// and we add 1 to it so we begin our next pass 1 step past step 7 (i.e. 8)
                 else {
-                    var tempCondition = Object.assign({}, condition);
+                    var tempCondition = util.clone(condition);
                     var orderNumber = tempCondition.order;
                     tempCondition.order = -1;	// let us know that we've already found this predicate to be ordered
                     orderedConditions[orderNumber] = tempCondition;
@@ -253,7 +252,7 @@
             //condition.earliestTime and condition.latestTime mess up 'get', because things STORED in the
             //sfdb don't have earliest and latest times, so they don't match. delete them for now, and give them back
             //at the end of the function
-            var searchCondition = Object.assign({}, condition);
+            var searchCondition = util.clone(condition);
             delete searchCondition.timeEarliest;
             delete searchCondition.timeLatest;
 
@@ -347,7 +346,7 @@
             //condition.turnsAgoBetween mess up 'get', because things STORED in the
             //sfdb don't have earliest and latest times, so they don't match. delete them for now, and give them back
             //at the end of the function
-            var searchCondition = Object.assign({}, condition);
+            var searchCondition = util.clone(condition);
             delete searchCondition.turnsAgoBetween;
 
 
@@ -494,7 +493,7 @@
         //So we still need to do another check here!
         var charactersToNotBeTheSubjectOrObjectOfTriggerRules = [];
         var eliminatedCharacters = sfdb.getEliminatedCharacters();
-        charactersToNotBeTheSubjectOrObjectOfTriggerRules = Object.assign({}, eliminatedCharacters);
+        charactersToNotBeTheSubjectOrObjectOfTriggerRules = util.clone(eliminatedCharacters);
 
 
         var processRuleEffects = function (effect, conditions, rule, effectNumber, lastNumber) {
@@ -601,7 +600,7 @@
         // or down. (or to make true or false, for booleans).
         var adjustWeight = function (effect, condition, rule) {
 
-            var result = Object.assign({}, effect);
+            var result = util.clone(effect);
             var skipToNextPredicate = false;
             delete result.weight;
 
@@ -814,7 +813,7 @@
         //and comparing them to each other!
 
         for (var key in pred1) {
-            if (Array.isArray(pred1[key]) && Array.isArray(pred2[key])) {
+            if (util.isArray(pred1[key]) && util.isArray(pred2[key])) {
                 // Technically, we should compare each array value; but for now, the only field that can be an array is turnsAgoBetween, and we'll ignore that for now. (Complex b/c tuple keys could be in diff. order and still be considered equal, 0 === "NOW", etc.)
                 continue;
             }
@@ -1058,7 +1057,7 @@
      */
     var getTriggerRules = function () {
         if (ruleLibrary.triggerRules) {
-            return Object.assign({}, ruleLibrary.triggerRules);
+            return util.clone(ruleLibrary.triggerRules);
         } else {
             return [];
         }
@@ -1075,7 +1074,7 @@
      */
     var getVolitionRules = function () {
         if (ruleLibrary.volitionRules) {
-            return Object.assign({}, ruleLibrary.volitionRules);
+            return util.clone(ruleLibrary.volitionRules);
         } else {
             return [];
         }
@@ -1101,7 +1100,7 @@
 
         if (rule === undefined) {
             // Get
-            return Object.assign({}, ruleLibrary[ruleSet][pos]);
+            return util.clone(ruleLibrary[ruleSet][pos]);
         } else if (typeof rule === "boolean") {
             // Delete
             // ruleIndexes is a dictionary with keys for each rule id, and values of its position in the corresponding rulesLibrary array. Splicing a rule from the middle of the array would cause all the ruleIndex position numbers to be wrong. Instead, we move the last rule in the library into the position of the one we're deleting and shorten its length by one, updating the index accordingly: this lets all other positions remain unchanged.
@@ -1123,7 +1122,7 @@
             return true;
         } else {
             // Set
-            ruleLibrary[ruleSet][pos] = Object.assign({}, rule);
+            ruleLibrary[ruleSet][pos] = util.clone(rule);
             return true;
         }
     }
@@ -1179,7 +1178,7 @@
         ruleIndexes = {};
         triggerRules = [];
         volitionRules = [];
-        iterator = 0;
+        util.resetIterator();
     }
 
     var ruleLibraryInterface = {

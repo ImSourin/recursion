@@ -14,7 +14,7 @@
     }
 })(this, function (require) {
 
-    var util = require('util');
+    var util = require('./util.js');
     var _ = require('underscore');
     var validate = require('./validate.js');
     var volition = require('./volition.js');
@@ -118,7 +118,7 @@
                 console.error("Error! The action " + action.name + " is already defined!");
                 continue;
             }
-            actions.push(Object.assign({}, action));
+            actions.push(util.clone(action));
             actionsToCategorize.push(action);
         }
         categorizeActionGrammar(actionsToCategorize);
@@ -149,7 +149,7 @@
     var categorizeActionGrammar = function (actionPool) {
         var currentAction;
         for (var i = 0; i < actionPool.length; i += 1) {
-            currentAction = Object.assign({}, actionPool[i]);
+            currentAction = util.clone(actionPool[i]);
             if (actionPool[i].intent !== undefined) {
                 startSymbols.push(currentAction);
             }
@@ -250,7 +250,7 @@
                 actionIntent.type === volition.type &&
                 actionIntent.intentDirection === volition.intentDirection) {
                 //it appears that this is an action pertaining to this volition!
-                var rootAction = Object.assign({}, startSymbols[i]);
+                var rootAction = util.clone(startSymbols[i]);
                 rootAction.goodBindings = [];
                 rootAction.goodBindings.push(initialGoodBindings);
                 rootAction.weight = weight; // This is the 'base' score that came from our microtheories equivalent.
@@ -289,7 +289,7 @@
 
         currentUniqueBindings = getUniqueActionBindings(nonTerminal, uniqueBindings);
         //#CODEREVIEW -- why is cast passed in twice here? Ah, because one is available and one is all. But "all" never changes, so insead of passing in a clone, how about just a reference.
-        var nonTerminalWorkingBindingCombinations = getWorkingBindingCombinations(nonTerminal, Object.assign({}, uniqueBindings), Object.assign({}, cast), Object.assign({}, nonTerminal.goodBindings), Object.assign({}, cast));
+        var nonTerminalWorkingBindingCombinations = getWorkingBindingCombinations(nonTerminal, util.clone(uniqueBindings), util.clone(cast), util.clone(nonTerminal.goodBindings), util.clone(cast));
         if (nonTerminalWorkingBindingCombinations.length <= 0) {
             //Oops, there is no possible combination of cast members that make this work!
             //So no point in going down this path anymore!
@@ -329,7 +329,7 @@
 
             if (terminalAction !== undefined) {
                 terminalsAtThisLevel = true;
-                terminalAction.goodBindings = Object.assign({}, nonTerminal.goodBindings);
+                terminalAction.goodBindings = util.clone(nonTerminal.goodBindings);
                 if (nonTerminal.lineage === undefined) {
                     terminalAction.lineage = nonTerminal.name;
                 } else {
@@ -338,7 +338,7 @@
                 //terminalAction.lineage = nonTerminal.lineage + "-" + nonTerminal.name;
 
                 currentUniqueBindings = getUniqueActionBindings(terminalAction, uniqueBindings);
-                var workingBindingCombinations = getWorkingBindingCombinations(terminalAction, Object.assign({}, currentUniqueBindings), Object.assign({}, cast), Object.assign({}, terminalAction.goodBindings), Object.assign({}, cast));
+                var workingBindingCombinations = getWorkingBindingCombinations(terminalAction, util.clone(currentUniqueBindings), util.clone(cast), util.clone(terminalAction.goodBindings), util.clone(cast));
 
                 terminalAction.goodBindings = workingBindingCombinations;
 
@@ -435,7 +435,7 @@
                 }
 
                 //RECURSIVE CALL! Using the non-terminal we're on as the starting point for the next level down the tree.
-                var diggingDeeperActions = getTerminalActionsFromNonTerminal(nonTerminalAction, isAccepted, actionsPerGroup, Object.assign({}, currentUniqueBindings), Object.assign({}, cast));
+                var diggingDeeperActions = getTerminalActionsFromNonTerminal(nonTerminalAction, isAccepted, actionsPerGroup, util.clone(currentUniqueBindings), util.clone(cast));
                 if (diggingDeeperActions === undefined || diggingDeeperActions.length <= 0) {
                     continue; // oops! This 'leads to' led to something that had no valid bindings! Better move on!
                 }
@@ -444,11 +444,11 @@
                 nonTerminalAction.actions = [];
                 for (var ddActionIndex = 0; ddActionIndex < diggingDeeperActions.length; ddActionIndex += 1) {
                     var thingToAdd = diggingDeeperActions[ddActionIndex];
-                    nonTerminalAction.actions.push(Object.assign({}, thingToAdd));
+                    nonTerminalAction.actions.push(util.clone(thingToAdd));
                 }
 
                 //And return the nonTerminalAction we created, that has stored within it now all of the 'good actions' that it can lead to.
-                returnList.push(Object.assign({}, nonTerminalAction));
+                returnList.push(util.clone(nonTerminalAction));
             }
 
         }
@@ -457,7 +457,7 @@
         //to see if we need to add anything in at this level in the tree.
         if (terminalsAtThisLevel === true) {
             for (var terminalsToPushUpIndex = 0; terminalsToPushUpIndex < terminalActionParentObject.actions.length; terminalsToPushUpIndex += 1) {
-                returnList.push(Object.assign({}, terminalActionParentObject.actions[terminalsToPushUpIndex]));
+                returnList.push(util.clone(terminalActionParentObject.actions[terminalsToPushUpIndex]));
             }
         }
 
@@ -572,7 +572,7 @@
     var getTerminalActionFromNameGeneric = function (actionName, actionArray) {
         for (var i = 0; i < actionArray.length; i += 1) {
             if (actionArray[i].name === actionName) {
-                return Object.assign({}, actionArray[i]);
+                return util.clone(actionArray[i]);
             }
         }
         return undefined;
@@ -588,7 +588,7 @@
     var getTerminalActionFromName = function (actionName) {
         for (var i = 0; i < terminalActions.length; i += 1) {
             if (terminalActions[i].name === actionName) {
-                return Object.assign({}, actions[i]);
+                return util.clone(actions[i]);
             }
         }
         return undefined;
@@ -604,7 +604,7 @@
     var getActionFromName = function (actionName) {
         for (var i = 0; i < actions.length; i += 1) {
             if (actions[i].name === actionName) {
-                return Object.assign({}, actions[i]);
+                return util.clone(actions[i]);
             }
         }
         return undefined;
@@ -677,8 +677,8 @@
             }
 
             newCombinationsToUse = []; // kinda weird, but we want to zero it out each time, because we only ever want it to have one entry.
-            newCombinationsToUse.push(Object.assign({}, combinationsToUse[workingCombinationIndex]));
-            availableCastMembers = Object.assign({}, allCastMembers);
+            newCombinationsToUse.push(util.clone(combinationsToUse[workingCombinationIndex]));
+            availableCastMembers = util.clone(allCastMembers);
 
             //I feel like we need to do something here to re-populate availableCastMembers with
             //the people previously spliced out from the previous uniqueBindings?
@@ -724,14 +724,14 @@
             if (isFilled === true) {
 
                 //Replace placeholder variables in conditions with actual character names.
-                var boundConditions = ruleLibrary.doBinding(uniqueBindings, Object.assign({}, action.conditions));
+                var boundConditions = ruleLibrary.doBinding(uniqueBindings, util.clone(action.conditions));
 
                 //Find out if the conditions are true with this particular set of characters in these roles.
                 var evaluationResult = ruleLibrary.evaluateConditions(boundConditions);
 
                 if (evaluationResult === true) {
                     //Awesome! It's true! Push it on to our return array for later!
-                    returnArray.push(Object.assign({}, uniqueBindings));
+                    returnArray.push(util.clone(uniqueBindings));
                 } else {
                     //console.log("FAILURE FAILURE. not even going to bother printing the combination.");
                 }
@@ -739,14 +739,14 @@
                 //time to recurse.
                 for (var i = 0; i < availableCastMembers.length; i += 1) {
                     uniqueBindings[emptyKey] = availableCastMembers[i];	// place an available cast member into the empty slot in the dictionary
-                    var updatedCastMembers = Object.assign({}, availableCastMembers);
+                    var updatedCastMembers = util.clone(availableCastMembers);
                     updatedCastMembers.splice(i, 1);	// the updated cast has the currently assigned member removed for the recursion
                     var potentialCombinations = getWorkingBindingCombinations(action, uniqueBindings, updatedCastMembers, newCombinationsToUse, allCastMembers);
 
                     //Depending on where we are in the recursion chain, there's a chance that potentialCombinations
                     //might have a length > 1. At least I think that's the case. If not, better safe than sorry, yeah?
                     for (var k = 0; k < potentialCombinations.length; k += 1) {
-                        returnArray.push(Object.assign({}, potentialCombinations[k]));
+                        returnArray.push(util.clone(potentialCombinations[k]));
                     }
                 }
                 //If we've gotten here, we want to 'clear out' the uniqueBindings slot of the current 'emptyKey'
@@ -791,7 +791,7 @@
 
         for (var i = 0; i < action.influenceRules.length; i += 1) {
             var rule = action.influenceRules[i];
-            var boundConditions = bindActionCondition(Object.assign({}, rule.conditions), bindingToUse);
+            var boundConditions = bindActionCondition(util.clone(rule.conditions), bindingToUse);
             var isRuleTrue = ruleLibrary.evaluateConditions(boundConditions);
             if (isRuleTrue === true) {
                 volitionSum += rule.weight;
@@ -919,7 +919,7 @@
             actionList = getSortedActionsFromVolition(initiator, responder, volitionInstance, isAccepted, weight, numActionsPerGroup, cast);
 
             for (var i = 0; i < actionList.length; i += 1) {
-                returnList.push(Object.assign({}, actionList[i]));
+                returnList.push(util.clone(actionList[i]));
                 //console.log("What does returnList look like at this point...? ", returnList);
                 if (thisIntentCountedYet === false) {
                     intentsRepresented += 1;

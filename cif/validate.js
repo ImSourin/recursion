@@ -12,7 +12,7 @@
     }
 })(this, function(require) {
 
-    var util = require('util');
+    var util = require('./util.js');
     var _ = require('underscore');
     var $ = require('./sfdb.js');
 
@@ -179,7 +179,7 @@
     var isPredBad = function (predicate, type, category) {
 
         // Make a local copy of the predicate. We will strip fields out of this copy until we've validated all of them, or we are left with extra unrecognized fields.
-        var pred = Object.assign({}, predicate);
+        var pred = util.clone(predicate);
 
         // Create a variable to store information about what went wrong with the predicate.
         var msg = "";
@@ -197,7 +197,7 @@
                 return true;
             }
             var jsType = typeof pred[key];
-            if (type === "array" && Array.isArray(pred[key])) {
+            if (type === "array" && util.isArray(pred[key])) {
                 // Allow this to pass.
                 type = "object";
             }
@@ -214,7 +214,7 @@
 
         // Handle blueprints.
         if (type === "blueprint") {
-            if (!Array.isArray(pred.types) || pred.types.length === 0 || typeof pred.types[0] !== "string") {
+            if (!util.isArray(pred.types) || pred.types.length === 0 || typeof pred.types[0] !== "string") {
                 return "key 'types' should be a non-empty array of strings; was '" + pred.types + "'";
             }
             delete pred.types;
@@ -227,7 +227,7 @@
             delete pred.directionType;
 
             if (isTypeWrong(pred, "duration", "number", false)) return msg;
-            if (pred.duration !== undefined && (pred.duration < 1 || !Number.isInteger(pred.duration))) {
+            if (pred.duration !== undefined && (pred.duration < 1 || !util.isInt(pred.duration))) {
                 return "duration was '" + pred.duration + "' which does not seem to be an integer > 0.";
             }
             delete pred.duration;
@@ -326,7 +326,7 @@
                                 return validmsg + "; instead saw string '" + tab[pos] + "'";
                             }
                         } else if (typeof tab[pos] === "number") {
-                            if (!Number.isInteger(tab[pos])) {
+                            if (!util.isInt(tab[pos])) {
                                 return validmsg + "; instead saw number '" + tab[pos] + "'"
                             }
                             if (tab[pos] < 0) {
@@ -347,7 +347,7 @@
                 }
 
                 if (isTypeWrong(pred, "order", "number", false)) return msg;
-                if (pred.order && (!Number.isInteger(pred.order) || pred.order < 0)) {
+                if (pred.order && (!util.isInt(pred.order) || pred.order < 0)) {
                     return "key order: '" + pred.order + "' seems not to be a positive integer";
                 }
                 delete pred.order;

@@ -13,7 +13,7 @@
 })(this, function(require) {
 
     var _ = require('underscore');
-    var util = require('util');
+    var util = require('./util.js');
     // var $ = require('test');
 
     var sfdb = [];
@@ -84,7 +84,7 @@
         if (timeStep === undefined) {
             timeStep = currentTimeStep;
         }
-        var slice = Object.assign({}, sfdb[timeStep]);
+        var slice = util.clone(sfdb[timeStep]);
         if (slice === undefined) {
             slice = [];
         }
@@ -179,14 +179,14 @@
 
         for (var i = currentTimeStep + 1; i <= timeStep; i += 1) {
 
-            //sfdb[i] = Object.assign({}, sfdb[i-1]); OLD WAY, changed to no longer clone things we aren't supposed to in the first place.
+            //sfdb[i] = util.clone(sfdb[i-1]); OLD WAY, changed to no longer clone things we aren't supposed to in the first place.
             sfdb[i] = [];
             if (sfdb[i - 1] !== undefined) {
                 for (var k = 0; k < sfdb[i - 1].length; k += 1) {
                     if (getRegisteredDuration(sfdb[i - 1][k]) !== 0) {//ONLY clone if the duration is 0.
                         //Otherwise we are dealing with something like an SFDB label, and we don't want to copy it
                         //to this new timestep.
-                        sfdb[i].push(Object.assign({}, sfdb[i - 1][k]));
+                        sfdb[i].push(util.clone(sfdb[i - 1][k]));
                     }
                 }
             }
@@ -253,7 +253,7 @@
         if (addAsReference) {// Simply add the reference to this predicate in the SFDB.
             matchResult = predicateRef;
         } else {// We're matching a predicate that doesn't exist in the SFDB because it's representing a default value.
-            matchResult = Object.assign({}, predicateRef);
+            matchResult = util.clone(predicateRef);
             if (value !== undefined) {
                 matchResult.value = value;
             }
@@ -281,7 +281,7 @@
 
         // If the search predicate is numeric and did not provide a value, we want to add an entry to the SFDB with the default value, and return a reference to that.
         else if (searchPredicate.value === undefined && !isBooleanPred && defaultValue !== undefined) {
-            var tempPred = Object.assign({}, searchPredicate);
+            var tempPred = util.clone(searchPredicate);
             tempPred.value = defaultValue;
             sfdb[currentTimeStep].push(tempPred);
             addResult(tempPred, defaultValue, true);
@@ -291,7 +291,7 @@
         else if (searchPredicate.value === undefined && isBooleanPred && defaultValue !== undefined) {
             matchesDefault = checkValueMatch(defaultValue, searchValue, searchPredicate.operator || "="); // assume a check for equality if no operator
             if (matchesDefault) {
-                var tempBoolPred = Object.assign({}, searchPredicate);
+                var tempBoolPred = util.clone(searchPredicate);
                 addResult(tempBoolPred, defaultValue, false);
             }
         }
@@ -542,7 +542,7 @@
 
         // Also update if a reciprocal predicate.
         if (isReciprocal) {
-            var recipPredicate = Object.assign({}, setPredicate);
+            var recipPredicate = util.clone(setPredicate);
             var temp = recipPredicate.second;
             recipPredicate.second = recipPredicate.first;
             recipPredicate.first = temp;
