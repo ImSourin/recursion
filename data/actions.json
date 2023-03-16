@@ -54,8 +54,8 @@
 					"class" : "feeling",
 					"type" : "healthWorry",
 					"first" : "hero",
-					"operator" : "=",
-					"value" : -500
+					"operator" : "-",
+					"value" : 500
 				}
 			]
 		},
@@ -112,8 +112,8 @@
 					"class" : "feeling",
 					"type" : "staminaWorry",
 					"first" : "hero",
-					"operator" : "=",
-					"value" : -500
+					"operator" : "-",
+					"value" : 500
 				}
 			]
 		},
@@ -171,8 +171,8 @@
 					"class" : "feeling",
 					"type" : "suspicion",
 					"first" : "hero",
-					"operator" : "=",
-					"value" : -500
+					"operator" : "-",
+					"value" : 500
 				}
 			]
 		},
@@ -266,7 +266,7 @@
 					"class" : "feeling",
 					"type" : "confidence",
 					"first" : "hero",
-					"operator" : "=",
+					"operator" : "-",
 					"value" : 100
 				}
 			]
@@ -284,7 +284,14 @@
 			],
 			"displayName" : "Die due to lack of health",
 			"influenceRules" : [],
-			"effects" : []
+			"effects" : [
+				{
+					"class" : "state",
+					"type" : "dead",
+					"first" : "hero",
+					"value" : false
+				}
+			]
 		},
 		{
 			"name" : "DIESTAMINA",
@@ -299,7 +306,14 @@
 			],
 			"displayName" : "Die due to lack of stamina",
 			"influenceRules" : [],
-			"effects" : []
+			"effects" : [
+				{
+					"class" : "state",
+					"type" : "dead",
+					"first" : "hero",
+					"value" : false
+				}
+			]
 		},
 		{
 			"name" : "WORRYHEALTH",

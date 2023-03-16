@@ -1002,6 +1002,18 @@
         return bindingsToUse;
     };
 
+    /**
+     * @method  doAction
+     * @description Performs a boundAction by executing all of its effects.
+     * @public
+     * @param boundAction [The boundAction to execute, as returned by ensemble.getAction(..) or ensemble.getActions(..).]
+     */
+    var doAction = function(boundAction){
+        for (let effect of boundAction.effects){
+            cif.set(effect);
+        }
+    }
+
 
     var actionLibraryInterface = {
         parseActions: parseActions,
@@ -1020,7 +1032,8 @@
         getBestTerminalFromActionList: getBestTerminalFromActionList,
 
         getAction: getAction,
-        getActions: getActions
+        getActions: getActions,
+        doAction: doAction
     };
 
 

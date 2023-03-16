@@ -1,0 +1,16 @@
+### Send POST request with json body
+POST http://localhost:8081/performAction
+Content-Type: application/json
+
+{
+  "action": "WORRYSTAMINA"
+}
+
+### Send POST request with json body
+POST http://localhost:8081/getAttribute
+Content-Type: application/json
+
+{
+  "class": "feeling",
+  "type": "staminaWorry"
+}

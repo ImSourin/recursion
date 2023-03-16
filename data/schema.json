@@ -7,8 +7,8 @@
 			"directionType" : "undirected",
 			"allowIntent" : true,
 			"defaultValue" : 50,
-			"maxValue" : 100,
-			"minValue" : -100
+			"maxValue" : 1000,
+			"minValue" : -1000
 		},
 		{
 			"class": "feeling",
@@ -16,8 +16,16 @@
 			"directionType": "undirected",
 			"types": ["suspicion", "healthWorry", "staminaWorry", "confidence"],
 			"defaultValue": 0,
-			"minValue": 0,
-			"maxValue": 100,
+			"minValue": -1000,
+			"maxValue": 1000,
+			"allowIntent": true
+		},
+		{
+			"class": "state",
+			"isBoolean": true,
+			"directionType": "undirected",
+			"types": ["dead"],
+			"defaultValue": false,
 			"allowIntent": true
 		}
 	]

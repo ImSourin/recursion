@@ -10,7 +10,7 @@
 					"class": "attribute",
 					"type": "health",
 					"first": "hero",
-					"weight": 10,
+					"weight": 50,
 					"intentDirection": true,
 					"value": true
 				},
@@ -18,13 +18,60 @@
 					"class": "attribute",
 					"type": "stamina",
 					"first": "hero",
-					"weight": 10,
+					"weight": 50,
 					"intentDirection": true,
 					"value": true
 				}
 			],
 			"origin": "volitionRules",
 			"id": "volitionRules_1"
+		},
+		{
+			"name": "Hero wants to find suspect",
+			"conditions": [],
+			"effects": [
+				{
+					"class": "feeling",
+					"type": "suspicion",
+					"first": "hero",
+					"weight": 30,
+					"intentDirection": false,
+					"value": true
+				}
+			],
+			"origin": "volitionRules",
+			"id": "volitionRules_2"
+		},
+		{
+			"name": "Hero wants to find the correct suspect",
+			"conditions": [],
+			"effects": [
+				{
+					"class": "feeling",
+					"type": "confidence",
+					"first": "hero",
+					"weight": 20,
+					"intentDirection": false,
+					"value": true
+				}
+			],
+			"origin": "volitionRules",
+			"id": "volitionRules_3"
+		},
+		{
+			"name": "Hero doesn't want to die",
+			"conditions": [],
+			"effects": [
+				{
+					"class": "state",
+					"type": "dead",
+					"first": "hero",
+					"weight": 100,
+					"intentDirection": false
+				}
+			],
+			"origin": "volitionRules",
+			"id": "volitionRules_4"
 		}
 	]
 }

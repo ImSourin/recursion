@@ -556,8 +556,8 @@
     };
 
     //public facing function to make two characters perform an action.
-    var doAction = function (actionName, initiator, responder, registeredVolitions) {
-        actionLibrary.doAction(actionName, initiator, responder, registeredVolitions);
+    var doAction = function (boundAction) {
+        actionLibrary.doAction(boundAction);
     };
 
 
