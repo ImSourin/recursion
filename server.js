@@ -16,10 +16,10 @@ var cast = cif.addCharacters(rawCast);
 var rawTriggerRules = JSON.parse(cif.loadFile("data/triggerRules.json"));
 var triggerRules = cif.addRules(rawTriggerRules);
 
-var rawVolitionRules = JSON.parse(cif.loadFile("data/volitionRules.json"));
+var rawVolitionRules = JSON.parse(cif.loadFile("data/volitionRules2.json"));
 var volitionRules = cif.addRules(rawVolitionRules);
 
-var rawActions = JSON.parse(cif.loadFile("data/actions.json"));
+var rawActions = JSON.parse(cif.loadFile("data/actions2.json"));
 var actions = cif.addActions(rawActions);
 const actionMap = new Map()
 actions.forEach((obj) => {
@@ -33,12 +33,11 @@ var history = cif.addHistory(rawHistory);
 
 app.get('/getActions', function (req, res) {
     var storedVolitions = cif.calculateVolition(cast);
-    // res.end(JSON.stringify(cif.getActions("hero", "hero", storedVolitions, cast, 1, 5, 5)));
-    res.end(JSON.stringify(cif.getAllActions()));
+    res.end(JSON.stringify(cif.getActions("hero", "hero", storedVolitions, cast, 5, 5, 5)));
+    // res.end(JSON.stringify(cif.getAllActions()));
 })
 
 app.post('/performAction', bodyParser.json(), function (req, res) {
-    console.log('Action found' + actionMap[req.body['action']])
     cif.doAction(actionMap.get(req.body['action']));
     res.end("OK");
 })

@@ -3,7 +3,15 @@ POST http://localhost:8081/performAction
 Content-Type: application/json
 
 {
-  "action": "WORRYSTAMINA"
+  "action": "WORRYHEALTH"
+}
+
+### Send POST request with json body
+POST http://localhost:8081/performAction
+Content-Type: application/json
+
+{
+  "action": "TEMPACTION"
 }
 
 ### Send POST request with json body
@@ -14,3 +22,6 @@ Content-Type: application/json
   "class": "feeling",
   "type": "staminaWorry"
 }
+
+### GET request with a header
+GET http://localhost:8081/getActions

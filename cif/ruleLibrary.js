@@ -343,6 +343,10 @@
                 condition.value = true;
             }
 
+            if(typeof condition.value === "object") {
+                condition.value = cif.get(condition.value)[0].value
+            }
+
             //condition.turnsAgoBetween mess up 'get', because things STORED in the
             //sfdb don't have earliest and latest times, so they don't match. delete them for now, and give them back
             //at the end of the function

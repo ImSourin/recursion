@@ -330,6 +330,9 @@
             if (isBooleanPred) {// If the client fails to specify a boolean value, we assume we are searching for the opposite of the default state. For instance, if the default value of a flag is false, and we omit a value in get(), the implication is that we're searching for a non-default case (true).
                 searchValue = true;
             }
+            if(typeof searchValue === "object") {
+                searchValue = cif.get(searchValue)[0].value
+            }
         }
 
 
@@ -482,6 +485,9 @@
         pattern.second = setPredicate.second;
 
         var value = setPredicate.value;
+        if(typeof value === "object") {
+            value = cif.get(value)[0].value
+        }
         var operator = setPredicate.operator;
 
         var isBooleanPred = getRegisteredIsBoolean(setPredicate);

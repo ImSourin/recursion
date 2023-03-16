@@ -14,6 +14,36 @@
           "type": "stamina",
           "first": "hero",
           "value": 50
+        },
+        {
+          "class": "feeling",
+          "type": "suspicion",
+          "first": "hero",
+          "value": 0
+        },
+        {
+          "class": "feeling",
+          "type": "healthWorry",
+          "first": "hero",
+          "value": 0
+        },
+        {
+          "class": "feeling",
+          "type": "staminaWorry",
+          "first": "hero",
+          "value": 0
+        },
+        {
+          "class": "feeling",
+          "type": "confidence",
+          "first": "hero",
+          "value": 0
+        },
+        {
+          "class": "state",
+          "type": "dead",
+          "first": "hero",
+          "value": false
         }
       ]
     }

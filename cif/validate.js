@@ -232,7 +232,7 @@
             }
             delete pred.duration;
 
-            if (pred.defaultValue !== undefined && (pred.isBoolean === true && typeof pred.defaultValue !== "boolean") || (pred.isBoolean === false && typeof pred.defaultValue !== "number")) {
+            if (pred.defaultValue !== undefined && (pred.isBoolean === true && typeof pred.defaultValue !== "boolean") || (pred.isBoolean === false && (typeof pred.defaultValue !== "number" && typeof pred.defaultValue !== "object"))) {
                 return "mismatch between blueprint isBoolean '" + pred.isBoolean + "' and type of defaultValue '" + pred.defaultValue + "' (" + typeof pred.defaultValue + ")";
             }
             delete pred.defaultValue;

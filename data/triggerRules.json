@@ -8,14 +8,14 @@
 				{
 					"class": "attribute",
 					"type": "health",
-					"first": "hero",
+					"first": "initiator",
 					"value": 50,
 					"operator": "-"
 				},
 				{
 					"class": "attribute",
 					"type": "stamina",
-					"first": "hero",
+					"first": "initiator",
 					"value": 50,
 					"operator": "-"
 				}

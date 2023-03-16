@@ -3,13 +3,13 @@
 	"type": "volition",
 	"rules": [
 		{
-			"name": "Hero wants health and stamina",
+			"name": "initiator wants health and stamina",
 			"conditions": [],
 			"effects": [
 				{
 					"class": "attribute",
 					"type": "health",
-					"first": "hero",
+					"first": "initiator",
 					"weight": 50,
 					"intentDirection": true,
 					"value": true
@@ -17,7 +17,7 @@
 				{
 					"class": "attribute",
 					"type": "stamina",
-					"first": "hero",
+					"first": "initiator",
 					"weight": 50,
 					"intentDirection": true,
 					"value": true
@@ -27,13 +27,13 @@
 			"id": "volitionRules_1"
 		},
 		{
-			"name": "Hero wants to find suspect",
+			"name": "initiator wants to find suspect",
 			"conditions": [],
 			"effects": [
 				{
 					"class": "feeling",
 					"type": "suspicion",
-					"first": "hero",
+					"first": "initiator",
 					"weight": 30,
 					"intentDirection": false,
 					"value": true
@@ -43,13 +43,13 @@
 			"id": "volitionRules_2"
 		},
 		{
-			"name": "Hero wants to find the correct suspect",
+			"name": "initiator wants to find the correct suspect",
 			"conditions": [],
 			"effects": [
 				{
 					"class": "feeling",
 					"type": "confidence",
-					"first": "hero",
+					"first": "initiator",
 					"weight": 20,
 					"intentDirection": false,
 					"value": true
@@ -59,15 +59,15 @@
 			"id": "volitionRules_3"
 		},
 		{
-			"name": "Hero doesn't want to die",
+			"name": "We want to find out if initiator is already dead",
 			"conditions": [],
 			"effects": [
 				{
 					"class": "state",
 					"type": "dead",
-					"first": "hero",
+					"first": "initiator",
 					"weight": 100,
-					"intentDirection": false
+					"intentDirection": true
 				}
 			],
 			"origin": "volitionRules",

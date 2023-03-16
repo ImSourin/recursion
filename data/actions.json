@@ -7,161 +7,173 @@
 				{
 					"class": "feeling",
 					"type": "healthWorry",
-					"first": "hero",
-					"operator": "=",
-					"value": 100
+					"first": "initiator",
+					"operator": ">",
+					"value": {
+						"class": "feeling",
+						"type": "staminaWorry",
+						"first": "initiator"
+					}
 				},
 				{
 					"class": "feeling",
-					"type": "staminaWorry",
-					"first": "hero",
-					"operator": "<",
-					"value": 50
-				},
-				{
-					"class": "feeling",
-					"type": "suspicion",
-					"first": "hero",
-					"operator": "<",
-					"value": 50
+					"type": "healthWorry",
+					"first": "initiator",
+					"operator": ">",
+					"value": {
+						"class": "feeling",
+						"type": "suspicion",
+						"first": "initiator"
+					}
 				},
 				{
 					"class": "attribute",
 					"type": "health",
-					"first": "hero",
+					"first": "initiator",
 					"operator": ">",
 					"value": -1
 				},
 				{
 					"class": "attribute",
 					"type": "stamina",
-					"first": "hero",
+					"first": "initiator",
 					"operator": ">",
 					"value": -1
 				}
 			],
 			"displayName" : "Repair O2",
 			"influenceRules" : [],
-			"effects" : [
-				{
-					"class" : "attribute",
-					"type" : "health",
-					"first" : "hero",
-					"operator" : "+",
-					"value" : 100
-				},
-				{
-					"class" : "feeling",
-					"type" : "healthWorry",
-					"first" : "hero",
-					"operator" : "-",
-					"value" : 500
-				}
-			]
+			"intent": {
+				"class": "attribute",
+				"type": "health",
+				"first": "initiator",
+				"intentDirection": true,
+				"value": true
+			},
+			"leadsTo": ["INCREASE_HEALTH", "DECREASE_HEALTH_WORRY"]
 		},
 		{
 			"name" : "FINDSUPPLIES",
 			"conditions" : [
 				{
 					"class": "feeling",
-					"type": "healthWorry",
-					"first": "hero",
-					"operator": "<",
-					"value": 50
+					"type": "staminaWorry",
+					"first": "initiator",
+					"operator": ">",
+					"value": {
+						"class": "feeling",
+						"type": "healthWorry",
+						"first": "initiator"
+					}
 				},
 				{
 					"class": "feeling",
 					"type": "staminaWorry",
-					"first": "hero",
-					"operator": "=",
-					"value": 100
-				},
-				{
-					"class": "feeling",
-					"type": "suspicion",
-					"first": "hero",
-					"operator": "<",
-					"value": 50
+					"first": "initiator",
+					"operator": ">",
+					"value": {
+						"class": "feeling",
+						"type": "suspicion",
+						"first": "initiator"
+					}
 				},
 				{
 					"class": "attribute",
 					"type": "health",
-					"first": "hero",
+					"first": "initiator",
 					"operator": ">",
 					"value": -1
 				},
 				{
 					"class": "attribute",
 					"type": "stamina",
-					"first": "hero",
+					"first": "initiator",
 					"operator": ">",
 					"value": -1
 				}
 			],
 			"displayName" : "Find Supplies",
 			"influenceRules" : [],
-			"effects" : [
-				{
-					"class" : "attribute",
-					"type" : "stamina",
-					"first" : "hero",
-					"operator" : "+",
-					"value" : 100
-				},
-				{
-					"class" : "feeling",
-					"type" : "staminaWorry",
-					"first" : "hero",
-					"operator" : "-",
-					"value" : 500
-				}
-			]
+			"intent": {
+				"class": "attribute",
+				"type": "stamina",
+				"first": "initiator",
+				"intentDirection": true,
+				"value": true
+			},
+			"leadsTo": ["INCREASE_STAMINA", "DECREASE_STAMINA_WORRY"]
 		},
 		{
-			"name" : "FINDSUSPECTCORRECT",
-			"displayName" : "Correct suspect found",
+			"name" : "FIND_SUSPECT",
+			"displayName" : "Suspect found",
 			"conditions" : [
 				{
 					"class": "feeling",
-					"type": "confidence",
-					"first": "hero",
-					"operator": "=",
-					"value": 100
-				},
-				{
-					"class": "feeling",
-					"type": "healthWorry",
-					"first": "hero",
-					"operator": "<",
-					"value": 50
-				},
-				{
-					"class": "feeling",
-					"type": "staminaWorry",
-					"first": "hero",
-					"operator": "<",
-					"value": 50
+					"type": "suspicion",
+					"first": "initiator",
+					"operator": ">",
+					"value": {
+						"class": "feeling",
+						"type": "healthWorry",
+						"first": "initiator"
+					}
 				},
 				{
 					"class": "feeling",
 					"type": "suspicion",
-					"first": "hero",
-					"operator": "=",
-					"value": 100
+					"first": "initiator",
+					"operator": ">",
+					"value": {
+						"class": "feeling",
+						"type": "staminaWorry",
+						"first": "initiator"
+					}
 				},
 				{
 					"class": "attribute",
 					"type": "health",
-					"first": "hero",
+					"first": "initiator",
 					"operator": ">",
 					"value": -1
 				},
 				{
 					"class": "attribute",
 					"type": "stamina",
-					"first": "hero",
+					"first": "initiator",
 					"operator": ">",
 					"value": -1
+				}
+			],
+			"influenceRules" : [],
+			"intent": {
+				"class": "feeling",
+				"type": "suspicion",
+				"first": "initiator",
+				"intentDirection": false,
+				"value": true
+			},
+			"isAccept" : true,
+			"effects" : [
+				{
+					"class" : "feeling",
+					"type" : "suspicion",
+					"first" : "initiator",
+					"operator" : "-",
+					"value" : 500
+				}
+			],
+			"leadsTo": ["FIND_SUSPECT_CORRECT", "FIND_SUSPECT_WRONG"]
+		},
+		{
+			"name" : "FIND_SUSPECT_CORRECT",
+			"displayName" : "Correct suspect found",
+			"conditions" : [
+				{
+					"class": "feeling",
+					"type": "confidence",
+					"first": "initiator",
+					"operator": "=",
+					"value": 100
 				}
 			],
 			"influenceRules" : [],
@@ -170,52 +182,16 @@
 				{
 					"class" : "feeling",
 					"type" : "suspicion",
-					"first" : "hero",
+					"first" : "initiator",
 					"operator" : "-",
 					"value" : 500
 				}
 			]
 		},
 		{
-			"name" : "FINDSUSPECTWRONG",
+			"name" : "FIND_SUSPECT_WRONG",
 			"displayName" : "Wrong suspect found",
-			"conditions" : [
-				{
-					"class": "feeling",
-					"type": "healthWorry",
-					"first": "hero",
-					"operator": "<",
-					"value": 50
-				},
-				{
-					"class": "feeling",
-					"type": "staminaWorry",
-					"first": "hero",
-					"operator": "<",
-					"value": 50
-				},
-				{
-					"class": "feeling",
-					"type": "suspicion",
-					"first": "hero",
-					"operator": "<",
-					"value": 100
-				},
-				{
-					"class": "attribute",
-					"type": "health",
-					"first": "hero",
-					"operator": ">",
-					"value": -1
-				},
-				{
-					"class": "attribute",
-					"type": "stamina",
-					"first": "hero",
-					"operator": ">",
-					"value": -1
-				}
-			],
+			"conditions" : [],
 			"influenceRules" : [],
 			"isAccept" : false,
 			"effects" : []
@@ -226,127 +202,139 @@
 				{
 					"class": "feeling",
 					"type": "healthWorry",
-					"first": "hero",
-					"operator": "<",
-					"value": 100
+					"first": "initiator",
+					"operator": "=",
+					"value": {
+						"class": "feeling",
+						"type": "staminaWorry",
+						"first": "initiator"
+					}
 				},
 				{
 					"class": "feeling",
 					"type": "staminaWorry",
-					"first": "hero",
-					"operator": "<",
-					"value": 100
-				},
-				{
-					"class": "feeling",
-					"type": "suspicion",
-					"first": "hero",
-					"operator": "<",
-					"value": 100
+					"first": "initiator",
+					"operator": "=",
+					"value": {
+						"class": "feeling",
+						"type": "suspicion",
+						"first": "initiator"
+					}
 				},
 				{
 					"class": "attribute",
 					"type": "health",
-					"first": "hero",
+					"first": "initiator",
 					"operator": ">",
 					"value": -1
 				},
 				{
 					"class": "attribute",
 					"type": "stamina",
-					"first": "hero",
+					"first": "initiator",
 					"operator": ">",
 					"value": -1
 				}
 			],
 			"displayName" : "Analyze data",
 			"influenceRules" : [],
-			"effects" : [
-				{
-					"class" : "feeling",
-					"type" : "confidence",
-					"first" : "hero",
-					"operator" : "-",
-					"value" : 100
-				}
-			]
+			"intent": {
+				"class": "feeling",
+				"type": "confidence",
+				"first": "initiator",
+				"intentDirection": true,
+				"value": true
+			},
+			"leadsTo": ["INCREASE_CONFIDENCE"]
 		},
 		{
-			"name" : "DIEHEALTH",
+			"name" : "DIE_HEALTH",
 			"conditions" : [
 				{
 					"class": "attribute",
 					"type": "health",
-					"first": "hero",
+					"first": "initiator",
 					"operator": "<",
 					"value": 0
 				}
 			],
+			"intent": {
+				"class": "state",
+				"type": "dead",
+				"first": "initiator",
+				"intentDirection": true
+			},
 			"displayName" : "Die due to lack of health",
 			"influenceRules" : [],
-			"effects" : [
-				{
-					"class" : "state",
-					"type" : "dead",
-					"first" : "hero",
-					"value" : false
-				}
-			]
+			"leadsTo": ["DIE"]
 		},
 		{
-			"name" : "DIESTAMINA",
+			"name" : "DIE_STAMINA",
 			"conditions" : [
 				{
 					"class": "attribute",
 					"type": "stamina",
-					"first": "hero",
+					"first": "initiator",
 					"operator": "<",
 					"value": 0
 				}
 			],
 			"displayName" : "Die due to lack of stamina",
 			"influenceRules" : [],
+			"intent": {
+				"class": "state",
+				"type": "dead",
+				"first": "initiator",
+				"intentDirection": true
+			},
+			"leadsTo": ["DIE"]
+		},
+		{
+			"name" : "DIE",
+			"conditions" : [],
+			"displayName" : "Die",
+			"influenceRules" : [],
 			"effects" : [
 				{
 					"class" : "state",
 					"type" : "dead",
-					"first" : "hero",
+					"first" : "initiator",
 					"value" : false
 				}
 			]
 		},
 		{
-			"name" : "WORRYHEALTH",
+			"name" : "INCREASE_HEALTH",
 			"conditions" : [],
-			"displayName" : "Worry about health",
+			"displayName" : "Increase health",
 			"influenceRules" : [],
 			"effects" : [
 				{
-					"class" : "feeling",
-					"type" : "healthWorry",
-					"first" : "hero",
+					"class" : "attribute",
+					"type" : "health",
+					"first" : "initiator",
 					"operator" : "+",
-					"value" : 50
+					"value" : 100
 				}
 			]
 		},
 		{
-			"name" : "WORRYSTAMINA",
+			"name" : "INCREASE_STAMINA",
 			"conditions" : [],
-			"displayName" : "Worry about stamina",
+			"displayName" : "Increase stamina",
 			"influenceRules" : [],
 			"effects" : [
 				{
-					"class" : "feeling",
-					"type" : "staminaWorry",
-					"first" : "hero",
+					"class" : "attribute",
+					"type" : "stamina",
+					"first" : "initiator",
 					"operator" : "+",
-					"value" : 50
+					"value" : 100
 				}
 			]
 		},
 		{
-			"name" : "WORRYSUSPICION",
+			"name" : "INCREASE_SUSPICION_WORRY",
 			"conditions" : [],
 			"displayName" : "Worry about suspicion",
 			"influenceRules" : [],
@@ -354,9 +342,99 @@
 				{
 					"class" : "feeling",
 					"type" : "suspicion",
-					"first" : "hero",
+					"first" : "initiator",
 					"operator" : "+",
 					"value" : 50
+				}
+			]
+		},
+		{
+			"name" : "INCREASE_HEALTH_WORRY",
+			"conditions" : [],
+			"displayName" : "Worry about health",
+			"influenceRules" : [],
+			"effects" : [
+				{
+					"class" : "feeling",
+					"type" : "healthWorry",
+					"first" : "initiator",
+					"operator" : "+",
+					"value" : 50
+				}
+			]
+		},
+		{
+			"name" : "INCREASE_STAMINA_WORRY",
+			"conditions" : [],
+			"displayName" : "Worry about stamina",
+			"influenceRules" : [],
+			"effects" : [
+				{
+					"class" : "feeling",
+					"type" : "staminaWorry",
+					"first" : "initiator",
+					"operator" : "+",
+					"value" : 50
+				}
+			]
+		},
+		{
+			"name" : "INCREASE_CONFIDENCE",
+			"conditions" : [],
+			"displayName" : "Increase confidence",
+			"influenceRules" : [],
+			"effects" : [
+				{
+					"class" : "feeling",
+					"type" : "confidence",
+					"first" : "initiator",
+					"operator" : "+",
+					"value" : 100
+				}
+			]
+		},
+		{
+			"name" : "DECREASE_HEALTH_WORRY",
+			"conditions" : [],
+			"displayName" : "Decrease Worry about health",
+			"influenceRules" : [],
+			"effects" : [
+				{
+					"class" : "feeling",
+					"type" : "healthWorry",
+					"first" : "initiator",
+					"operator" : "-",
+					"value" : 500
+				}
+			]
+		},
+		{
+			"name" : "DECREASE_STAMINA_WORRY",
+			"conditions" : [],
+			"displayName" : "Decrease Worry about stamina",
+			"influenceRules" : [],
+			"effects" : [
+				{
+					"class" : "feeling",
+					"type" : "staminaWorry",
+					"first" : "initiator",
+					"operator" : "-",
+					"value" : 500
+				}
+			]
+		},
+		{
+			"name" : "DECREASE_SUSPICION_WORRY",
+			"conditions" : [],
+			"displayName" : "Decrease Worry about suspicion",
+			"influenceRules" : [],
+			"effects" : [
+				{
+					"class" : "feeling",
+					"type" : "suspicion",
+					"first" : "initiator",
+					"operator" : "-",
+					"value" : 500
 				}
 			]
 		}
