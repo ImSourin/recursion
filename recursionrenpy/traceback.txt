@@ -1,0 +1,22 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 19, in script
+    jump gather_supplies
+ScriptError: could not find label 'gather_supplies'.
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 19, in script
+    jump gather_supplies
+  File "/Users/data_machine/Desktop/ECS 289G Project/renpy-8.0.3-sdk/renpy/ast.py", line 1974, in execute
+    rv = renpy.game.script.lookup(target)
+  File "/Users/data_machine/Desktop/ECS 289G Project/renpy-8.0.3-sdk/renpy/script.py", line 927, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'gather_supplies'.
+
+macOS-10.16-x86_64-i386-64bit x86_64
+Ren'Py 8.0.3.22090809
+recursionrenpy 1.0
+Thu Mar 16 02:42:33 2023
