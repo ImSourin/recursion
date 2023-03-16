@@ -13,19 +13,12 @@ label start:
     
     p "I need to save the crew members and find out what happened."
 
+    # 3 questions?
+    jump question_bank
+    jump question_bank
+    jump question_bank
 
-
-    #Display the first choice 
-
-    menu:
-        "Repair the oxygen supply first":
-            jump repair_oxygen
-        "Gather supplies first":
-            jump gather_supplies
-        "Analyze the data logs first":
-            jump analyze_data
-        "Find the suspect first":
-            jump find_suspect
+    jump check_and_jump
 
 label repair_oxygen: 
 
@@ -37,13 +30,10 @@ label repair_oxygen:
     
     p "Phew, I've managed to fix the oxygen supply. I can breathe a sigh of relief for now, but there's still a lot to do. What should I do next?"
 
-    menu:
-        "Gather supplies":
-            jump gather_supplies
-        "Analyze the data logs":
-            jump analyze_data
-        "Find the suspect":
-            jump find_suspect
+    jump question_bank
+
+    jump check_and_jump
+
 
 label gather_supplies:
 
@@ -53,11 +43,9 @@ label gather_supplies:
 
     "I've managed to gather the supplies we need to survive. But there's more to be done. What should I do next?"
     
-    menu:
-        "Analyze the data logs":
-            jump analyze_data
-        "Find the suspect":
-            jump find_suspect
+    jump question_bank
+
+    jump check_and_jump
 
 label analyze_data:
 
@@ -67,9 +55,9 @@ label analyze_data:
 
     p "This is strange. There's an encrypted file here that wasn't created by any of our crew members. I should try to decrypt it and see what's inside."
 
-    menu: 
-        "Find the suspect":
-            jump find_suspect
+    jump question_bank
+
+    jump check_and_jump
 
 label find_suspect: 
 
@@ -86,3 +74,54 @@ label find_suspect:
     p "What's that? It looks like a hidden panel. I wonder what's behind it. I should investigate."
 
     p "I've gathered supplies, analyzed data, and found a suspect. It turns out that one of our crew members was responsible for the attack. We've arrested the traitor and secured the ship. We're safe for now, but who knows what else could happen out here in space. I need to stay vigilant."
+
+    jump question_bank
+
+    jump check_and_jump
+
+
+label question_bank:
+    # Call cif to get the univisited nodes
+    # if no nodes left
+    jump win
+       
+    menu:
+        # Avoid menu if only 1 menu item or 2 items(analyze_data and find_suspect)
+        # If repair_oxygen is univisited
+        "Worry about health":
+            #Call cif api to increase healthWorry
+        
+        #If gather_supplies is unvisited
+        "Worry about stamina":
+            #Call cif api to increase staminaWorry
+
+        #If analyze_data or find_suspect is unvisited
+        "Worry about suspicion":
+            #Call cif api to increase suspicion
+    
+
+label check_and_jump:
+    # call cif_api to get transition
+    # if transition is between find_suspect and analyze_data
+    menu:
+        "find suspect":
+            # transition = find_suspect
+        "analyze_data":
+            # transition = analyze_data
+
+    # call transition api
+    # call trigger
+
+    # check if dead from cif
+    # if dead:
+        jump lost
+
+    # jump to transition
+
+label win:
+    "WIN"
+
+label lost:
+    "LOST"
+    
+    

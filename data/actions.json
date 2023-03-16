@@ -153,15 +153,6 @@
 				"value": true
 			},
 			"isAccept" : true,
-			"effects" : [
-				{
-					"class" : "feeling",
-					"type" : "suspicion",
-					"first" : "initiator",
-					"operator" : "-",
-					"value" : 500
-				}
-			],
 			"leadsTo": ["FIND_SUSPECT_CORRECT", "FIND_SUSPECT_WRONG"]
 		},
 		{
@@ -201,23 +192,23 @@
 			"conditions" : [
 				{
 					"class": "feeling",
-					"type": "healthWorry",
+					"type": "suspicion",
 					"first": "initiator",
-					"operator": "=",
+					"operator": ">",
 					"value": {
 						"class": "feeling",
-						"type": "staminaWorry",
+						"type": "healthWorry",
 						"first": "initiator"
 					}
 				},
 				{
 					"class": "feeling",
-					"type": "staminaWorry",
+					"type": "suspicion",
 					"first": "initiator",
-					"operator": "=",
+					"operator": ">",
 					"value": {
 						"class": "feeling",
-						"type": "suspicion",
+						"type": "staminaWorry",
 						"first": "initiator"
 					}
 				},
