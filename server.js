@@ -16,10 +16,10 @@ var cast = cif.addCharacters(rawCast);
 var rawTriggerRules = JSON.parse(cif.loadFile("data/triggerRules.json"));
 var triggerRules = cif.addRules(rawTriggerRules);
 
-var rawVolitionRules = JSON.parse(cif.loadFile("data/volitionRules2.json"));
+var rawVolitionRules = JSON.parse(cif.loadFile("data/volitionRules.json"));
 var volitionRules = cif.addRules(rawVolitionRules);
 
-var rawActions = JSON.parse(cif.loadFile("data/actions2.json"));
+var rawActions = JSON.parse(cif.loadFile("data/actions.json"));
 var actions = cif.addActions(rawActions);
 const actionMap = new Map()
 actions.forEach((obj) => {
@@ -49,6 +49,10 @@ app.post('/getAttribute', bodyParser.json(), function (req, res) {
         "first" : "hero"
     };
     res.end(JSON.stringify(cif.get(attributeQuery)))
+})
+
+app.get('/runTriggers', function (req, res) {
+    res.end(JSON.stringify(cif.runTriggerRules(cast)));
 })
 
 var server = app.listen(8081, function () {

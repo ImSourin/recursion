@@ -12,7 +12,7 @@
 					"value": {
 						"class": "feeling",
 						"type": "staminaWorry",
-						"first": "initiator"
+						"first": "hero"
 					}
 				},
 				{
@@ -23,7 +23,7 @@
 					"value": {
 						"class": "feeling",
 						"type": "suspicion",
-						"first": "initiator"
+						"first": "hero"
 					}
 				},
 				{
@@ -63,7 +63,7 @@
 					"value": {
 						"class": "feeling",
 						"type": "healthWorry",
-						"first": "initiator"
+						"first": "hero"
 					}
 				},
 				{
@@ -74,7 +74,7 @@
 					"value": {
 						"class": "feeling",
 						"type": "suspicion",
-						"first": "initiator"
+						"first": "hero"
 					}
 				},
 				{
@@ -115,7 +115,7 @@
 					"value": {
 						"class": "feeling",
 						"type": "healthWorry",
-						"first": "initiator"
+						"first": "hero"
 					}
 				},
 				{
@@ -126,7 +126,7 @@
 					"value": {
 						"class": "feeling",
 						"type": "staminaWorry",
-						"first": "initiator"
+						"first": "hero"
 					}
 				},
 				{
@@ -173,7 +173,7 @@
 				{
 					"class" : "feeling",
 					"type" : "suspicion",
-					"first" : "initiator",
+					"first" : "hero",
 					"operator" : "-",
 					"value" : 500
 				}
@@ -184,8 +184,7 @@
 			"displayName" : "Wrong suspect found",
 			"conditions" : [],
 			"influenceRules" : [],
-			"isAccept" : false,
-			"effects" : []
+			"isAccept" : false
 		},
 		{
 			"name" : "ANALYZEDATA",
@@ -198,7 +197,7 @@
 					"value": {
 						"class": "feeling",
 						"type": "healthWorry",
-						"first": "initiator"
+						"first": "hero"
 					}
 				},
 				{
@@ -209,7 +208,7 @@
 					"value": {
 						"class": "feeling",
 						"type": "staminaWorry",
-						"first": "initiator"
+						"first": "hero"
 					}
 				},
 				{
@@ -289,7 +288,7 @@
 				{
 					"class" : "state",
 					"type" : "dead",
-					"first" : "initiator",
+					"first" : "hero",
 					"value" : false
 				}
 			]
@@ -303,7 +302,7 @@
 				{
 					"class" : "attribute",
 					"type" : "health",
-					"first" : "initiator",
+					"first" : "hero",
 					"operator" : "+",
 					"value" : 100
 				}
@@ -318,14 +317,14 @@
 				{
 					"class" : "attribute",
 					"type" : "stamina",
-					"first" : "initiator",
+					"first" : "hero",
 					"operator" : "+",
 					"value" : 100
 				}
 			]
 		},
 		{
-			"name" : "INCREASE_SUSPICION_WORRY",
+			"name" : "INCREASE_SUSPICION",
 			"conditions" : [],
 			"displayName" : "Worry about suspicion",
 			"influenceRules" : [],
@@ -333,7 +332,7 @@
 				{
 					"class" : "feeling",
 					"type" : "suspicion",
-					"first" : "initiator",
+					"first" : "hero",
 					"operator" : "+",
 					"value" : 50
 				}
@@ -348,7 +347,7 @@
 				{
 					"class" : "feeling",
 					"type" : "healthWorry",
-					"first" : "initiator",
+					"first" : "hero",
 					"operator" : "+",
 					"value" : 50
 				}
@@ -363,7 +362,7 @@
 				{
 					"class" : "feeling",
 					"type" : "staminaWorry",
-					"first" : "initiator",
+					"first" : "hero",
 					"operator" : "+",
 					"value" : 50
 				}
@@ -378,7 +377,7 @@
 				{
 					"class" : "feeling",
 					"type" : "confidence",
-					"first" : "initiator",
+					"first" : "hero",
 					"operator" : "+",
 					"value" : 100
 				}
@@ -393,7 +392,7 @@
 				{
 					"class" : "feeling",
 					"type" : "healthWorry",
-					"first" : "initiator",
+					"first" : "hero",
 					"operator" : "-",
 					"value" : 500
 				}
@@ -408,7 +407,7 @@
 				{
 					"class" : "feeling",
 					"type" : "staminaWorry",
-					"first" : "initiator",
+					"first" : "hero",
 					"operator" : "-",
 					"value" : 500
 				}
@@ -423,7 +422,7 @@
 				{
 					"class" : "feeling",
 					"type" : "suspicion",
-					"first" : "initiator",
+					"first" : "hero",
 					"operator" : "-",
 					"value" : 500
 				}

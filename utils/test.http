@@ -1,20 +1,28 @@
-### Send POST request with json body
+### label start: answer 1
 POST http://localhost:8081/performAction
 Content-Type: application/json
 
 {
-  "action": "WORRYHEALTH"
+  "action": "INCREASE_HEALTH_WORRY"
 }
 
-### Send POST request with json body
+### label start: answer 2
 POST http://localhost:8081/performAction
 Content-Type: application/json
 
 {
-  "action": "TEMPACTION"
+  "action": "INCREASE_STAMINA_WORRY"
 }
 
-### Send POST request with json body
+### label start: answer 3
+POST http://localhost:8081/performAction
+Content-Type: application/json
+
+{
+  "action": "INCREASE_HEALTH_WORRY"
+}
+
+### getAttribute
 POST http://localhost:8081/getAttribute
 Content-Type: application/json
 
@@ -23,5 +31,40 @@ Content-Type: application/json
   "type": "staminaWorry"
 }
 
-### GET request with a header
+### getAttribute
+POST http://localhost:8081/getAttribute
+Content-Type: application/json
+
+{
+  "class": "feeling",
+  "type": "healthWorry"
+}
+
+### label start: get transition action
 GET http://localhost:8081/getActions
+
+### run triggers
+GET http://localhost:8081/runTriggers
+
+### getAttribute
+POST http://localhost:8081/getAttribute
+Content-Type: application/json
+
+{
+  "class": "attribute",
+  "type": "health"
+}
+
+### getAttribute
+POST http://localhost:8081/getAttribute
+Content-Type: application/json
+
+{
+  "class": "attribute",
+  "type": "stamina"
+}
+
+### label start: get transition action
+GET http://localhost:8081/getActions
+
+
