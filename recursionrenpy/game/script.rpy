@@ -29,11 +29,10 @@ label repair_oxygen:
     "The protagonist rushes to repair the oxygen supply, but it takes time and his stamina keeps decreasing. Finally, he is successful in repairing the oxygen supply"
     
     p "Phew, I've managed to fix the oxygen supply. I can breathe a sigh of relief for now, but there's still a lot to do. What should I do next?"
-
+    
     jump question_bank
 
     jump check_and_jump
-
 
 label gather_supplies:
 

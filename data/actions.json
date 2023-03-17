@@ -169,22 +169,15 @@
 			],
 			"influenceRules" : [],
 			"isAccept" : true,
-			"effects" : [
-				{
-					"class" : "feeling",
-					"type" : "suspicion",
-					"first" : "hero",
-					"operator" : "-",
-					"value" : 500
-				}
-			]
+			"leadsTo": ["DECREASE_SUSPICION"]
 		},
 		{
 			"name" : "FIND_SUSPECT_WRONG",
 			"displayName" : "Wrong suspect found",
 			"conditions" : [],
 			"influenceRules" : [],
-			"isAccept" : false
+			"isAccept" : false,
+			"leadsTo": ["INCREASE_SUSPICION"]
 		},
 		{
 			"name" : "ANALYZEDATA",
@@ -414,7 +407,7 @@
 			]
 		},
 		{
-			"name" : "DECREASE_SUSPICION_WORRY",
+			"name" : "DECREASE_SUSPICION",
 			"conditions" : [],
 			"displayName" : "Decrease Worry about suspicion",
 			"influenceRules" : [],
@@ -424,7 +417,7 @@
 					"type" : "suspicion",
 					"first" : "hero",
 					"operator" : "-",
-					"value" : 500
+					"value" : 50
 				}
 			]
 		}
