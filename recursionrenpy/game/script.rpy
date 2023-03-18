@@ -124,7 +124,6 @@ label QUESTION:
             })
     return
 
-
 label TRANSITION:
     python:
         unvisited_nodes = json.loads(requests.get(BASE_URL+'getUnvisitedNodes').text)
@@ -141,8 +140,6 @@ label TRANSITION:
         })
         requests.get(BASE_URL+'runTriggers')
         renpy.jump(str(transition))
-
-
 
 label LOST:
     python:
