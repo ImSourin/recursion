@@ -19,7 +19,7 @@ POST http://localhost:8081/performAction
 Content-Type: application/json
 
 {
-  "action": "INCREASE_HEALTH_WORRY"
+  "action": "INCREASE_SUSPICION"
 }
 
 ### getAttribute
@@ -38,6 +38,39 @@ Content-Type: application/json
 {
   "class": "feeling",
   "type": "healthWorry"
+}
+
+### getAttribute
+POST http://localhost:8081/getAttribute
+Content-Type: application/json
+
+{
+  "class": "feeling",
+  "type": "suspicion"
+}
+
+### label start: answer 1
+POST http://localhost:8081/performAction
+Content-Type: application/json
+
+{
+  "action": "REPAIR_O2"
+}
+
+### label start: answer 1
+POST http://localhost:8081/performAction
+Content-Type: application/json
+
+{
+  "action": "GATHER_SUPPLIES"
+}
+
+### label start: answer 1
+POST http://localhost:8081/performAction
+Content-Type: application/json
+
+{
+  "action": "ANALYZE_DATA"
 }
 
 ### label start: get transition action
@@ -65,6 +98,6 @@ Content-Type: application/json
 }
 
 ### label start: get transition action
-GET http://localhost:8081/getActions
+GET http://localhost:8081/getUnvisitedNodes
 
 

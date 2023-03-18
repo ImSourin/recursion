@@ -51,7 +51,7 @@
 					"type": "confidence",
 					"first": "initiator",
 					"weight": 20,
-					"intentDirection": false,
+					"intentDirection": true,
 					"value": true
 				}
 			],

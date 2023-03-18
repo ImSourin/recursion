@@ -952,7 +952,7 @@
         if (pred.operator && ["+", "-"].indexOf(pred.operator) >= 0) {
             predType = "change";
         }
-        if (pred.operator && [">", "<", "="].indexOf(pred.operator) >= 0) {
+        if (pred.operator && [">", "<", "=", ">=", "<="].indexOf(pred.operator) >= 0) {
             predType = "compare"
         }
         if (pred.weight !== undefined) {
@@ -968,12 +968,14 @@
                 directionWord = "more";
                 break;
             case ">":
+            case ">=":
                 directionWord = "more than";
                 break;
             case "-":
                 directionWord = "less";
                 break;
             case "<":
+            case "<=":
                 directionWord = "less than";
                 break;
             default:

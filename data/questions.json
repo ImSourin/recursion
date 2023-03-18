@@ -1,0 +1,170 @@
+{
+  "questions": [
+    {
+      "text": "The clock is ticking and the oxygen levels are dropping rapidly. What is your top priority to stay alive?",
+      "visited": [],
+      "optionLabels": [
+        "Maintaining your own health and energy levels",
+        "Fixing the life support system as quickly as possible",
+        "Investigating the cause of the damage to prevent future incidents"
+      ],
+      "optionActions": [
+        "INCREASE_HEALTH_WORRY",
+        "INCREASE_STAMINA_WORRY",
+        "INCREASE_SUSPICION"
+      ],
+      "id": "q1"
+    },
+    {
+      "text": "The strange energy signature is getting stronger and more intense. You know something is out there, waiting for you. What is your main concern?",
+      "visited": [],
+      "optionLabels": [
+        "Your physical safety and well-being",
+        "Discovering the source of the energy signature",
+        "Assessing the potential danger of the situation"
+      ],
+      "optionActions": [
+        "INCREASE_HEALTH_WORRY",
+        "INCREASE_STAMINA_WORRY",
+        "INCREASE_SUSPICION"
+      ],
+      "id": "q2"
+    },
+    {
+      "text": "You've suspected for a while now that someone on the crew is up to no good. It's time to confront them and get to the bottom of things. How do you approach the situation?",
+      "visited": [],
+      "optionLabels": [
+        "Discuss your concerns with another crew member before taking action.",
+        "Check whether Oxygen levels can be improved",
+        "Check whether there's a pod to escape"
+      ],
+      "optionActions": [
+        "INCREASE_SUSPICION",
+        "INCREASE_HEALTH_WORRY",
+        "INCREASE_STAMINA_WORRY"
+      ],
+      "id": "q3"
+    },
+    {
+      "text": "You've suspected for a while now that someone on the crew is up to no good. It's time to confront them and get to the bottom of things. How do you approach the situation?",
+      "visited": ["REPAIR_O2", "GATHER_SUPPLIES"],
+      "optionLabels": [
+        "Discuss your concerns with another crew member before taking action",
+        "Confront the crew member immediately and demand answers"
+      ],
+      "optionActions": [
+        "ANALYZE_DATA",
+        "FIND_SUSPECT"
+      ],
+      "id": "q4"
+    },
+    {
+      "text": "test question",
+      "visited": ["REPAIR_O2"],
+      "optionLabels": [
+        "option1",
+        "option2"
+      ],
+      "optionActions": [
+        "INCREASE_STAMINA_WORRY",
+        "INCREASE_SUSPICION"
+      ],
+      "id": "q5"
+    },
+    {
+      "text": "test question",
+      "visited": ["GATHER_SUPPLIES"],
+      "optionLabels": [
+        "option1",
+        "option2"
+      ],
+      "optionActions": [
+        "INCREASE_HEALTH_WORRY",
+        "INCREASE_SUSPICION"
+      ],
+      "id": "q6"
+    },
+    {
+      "text": "test question",
+      "visited": ["ANALYZE_DATA"],
+      "optionLabels": [
+        "option1",
+        "option2",
+        "option3"
+      ],
+      "optionActions": [
+        "INCREASE_HEALTH_WORRY",
+        "INCREASE_SUSPICION",
+        "INCREASE_STAMINA_WORRY"
+      ],
+      "id": "q7"
+    },
+    {
+      "text": "test question",
+      "visited": ["FIND_SUSPECT"],
+      "optionLabels": [
+        "option1",
+        "option2",
+        "option3"
+      ],
+      "optionActions": [
+        "INCREASE_HEALTH_WORRY",
+        "INCREASE_SUSPICION",
+        "INCREASE_STAMINA_WORRY"
+      ],
+      "id": "q8"
+    },
+    {
+      "text": "test qn",
+      "visited": ["REPAIR_O2", "FIND_SUSPECT"],
+      "optionLabels": [
+        "Discuss your concerns with another crew member before taking action",
+        "Confront the crew member immediately and demand answers"
+      ],
+      "optionActions": [
+        "INCREASE_STAMINA_WORRY",
+        "INCREASE_SUSPICION"
+      ],
+      "id": "q9"
+    },
+    {
+      "text": "test qn",
+      "visited": ["REPAIR_O2", "ANALYZE_DATA"],
+      "optionLabels": [
+        "Discuss your concerns with another crew member before taking action",
+        "Confront the crew member immediately and demand answers"
+      ],
+      "optionActions": [
+        "INCREASE_HEALTH_WORRY",
+        "INCREASE_SUSPICION"
+      ],
+      "id": "q10"
+    },
+    {
+      "text": "test qn",
+      "visited": ["GATHER_SUPPLIES", "FIND_SUSPECT"],
+      "optionLabels": [
+        "Discuss your concerns with another crew member before taking action",
+        "Confront the crew member immediately and demand answers"
+      ],
+      "optionActions": [
+        "INCREASE_HEALTH_WORRY",
+        "INCREASE_SUSPICION"
+      ],
+      "id": "q11"
+    },
+    {
+      "text": "test qn",
+      "visited": ["GATHER_SUPPLIES", "ANALYZE_DATA"],
+      "optionLabels": [
+        "Discuss your concerns with another crew member before taking action",
+        "Confront the crew member immediately and demand answers"
+      ],
+      "optionActions": [
+        "INCREASE_HEALTH_WORRY",
+        "INCREASE_SUSPICION"
+      ],
+      "id": "q12"
+    }
+  ]
+}

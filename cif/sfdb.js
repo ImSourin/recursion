@@ -237,6 +237,10 @@
             return false;
         } else if (operator === "<" && sfdbValue >= searchValue) {
             return false;
+        } else if (operator === ">=" && sfdbValue < searchValue) {
+            return false;
+        } else if (operator === "<=" && sfdbValue > searchValue) {
+            return false;
         }
         // Either the values match, or we have a numeric class but no operator, in which case we count this as a match (we're probably trying to get the current value of this predicate.)
         return true;

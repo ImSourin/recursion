@@ -2,13 +2,13 @@
 	"fileName" : "actions.json",
 	"actions" : [
 		{
-			"name" : "REPAIRO2",
+			"name" : "REPAIR_O2",
 			"conditions" : [
 				{
 					"class": "feeling",
 					"type": "healthWorry",
 					"first": "initiator",
-					"operator": ">",
+					"operator": ">=",
 					"value": {
 						"class": "feeling",
 						"type": "staminaWorry",
@@ -19,7 +19,7 @@
 					"class": "feeling",
 					"type": "healthWorry",
 					"first": "initiator",
-					"operator": ">",
+					"operator": ">=",
 					"value": {
 						"class": "feeling",
 						"type": "suspicion",
@@ -30,15 +30,15 @@
 					"class": "attribute",
 					"type": "health",
 					"first": "initiator",
-					"operator": ">",
-					"value": -1
+					"operator": ">=",
+					"value": 0
 				},
 				{
 					"class": "attribute",
 					"type": "stamina",
 					"first": "initiator",
-					"operator": ">",
-					"value": -1
+					"operator": ">=",
+					"value": 0
 				}
 			],
 			"displayName" : "Repair O2",
@@ -53,13 +53,13 @@
 			"leadsTo": ["INCREASE_HEALTH", "DECREASE_HEALTH_WORRY"]
 		},
 		{
-			"name" : "FINDSUPPLIES",
+			"name" : "GATHER_SUPPLIES",
 			"conditions" : [
 				{
 					"class": "feeling",
 					"type": "staminaWorry",
 					"first": "initiator",
-					"operator": ">",
+					"operator": ">=",
 					"value": {
 						"class": "feeling",
 						"type": "healthWorry",
@@ -70,7 +70,7 @@
 					"class": "feeling",
 					"type": "staminaWorry",
 					"first": "initiator",
-					"operator": ">",
+					"operator": ">=",
 					"value": {
 						"class": "feeling",
 						"type": "suspicion",
@@ -81,15 +81,15 @@
 					"class": "attribute",
 					"type": "health",
 					"first": "initiator",
-					"operator": ">",
-					"value": -1
+					"operator": ">=",
+					"value": 0
 				},
 				{
 					"class": "attribute",
 					"type": "stamina",
 					"first": "initiator",
-					"operator": ">",
-					"value": -1
+					"operator": ">=",
+					"value": 0
 				}
 			],
 			"displayName" : "Find Supplies",
@@ -111,7 +111,7 @@
 					"class": "feeling",
 					"type": "suspicion",
 					"first": "initiator",
-					"operator": ">",
+					"operator": ">=",
 					"value": {
 						"class": "feeling",
 						"type": "healthWorry",
@@ -122,7 +122,7 @@
 					"class": "feeling",
 					"type": "suspicion",
 					"first": "initiator",
-					"operator": ">",
+					"operator": ">=",
 					"value": {
 						"class": "feeling",
 						"type": "staminaWorry",
@@ -133,15 +133,15 @@
 					"class": "attribute",
 					"type": "health",
 					"first": "initiator",
-					"operator": ">",
-					"value": -1
+					"operator": ">=",
+					"value": 0
 				},
 				{
 					"class": "attribute",
 					"type": "stamina",
 					"first": "initiator",
-					"operator": ">",
-					"value": -1
+					"operator": ">=",
+					"value": 0
 				}
 			],
 			"influenceRules" : [],
@@ -177,16 +177,16 @@
 			"conditions" : [],
 			"influenceRules" : [],
 			"isAccept" : false,
-			"leadsTo": ["INCREASE_SUSPICION"]
+			"leadsTo": ["DECREASE_SUSPICION"]
 		},
 		{
-			"name" : "ANALYZEDATA",
+			"name" : "ANALYZE_DATA",
 			"conditions" : [
 				{
 					"class": "feeling",
 					"type": "suspicion",
 					"first": "initiator",
-					"operator": ">",
+					"operator": ">=",
 					"value": {
 						"class": "feeling",
 						"type": "healthWorry",
@@ -197,7 +197,7 @@
 					"class": "feeling",
 					"type": "suspicion",
 					"first": "initiator",
-					"operator": ">",
+					"operator": ">=",
 					"value": {
 						"class": "feeling",
 						"type": "staminaWorry",
@@ -208,15 +208,15 @@
 					"class": "attribute",
 					"type": "health",
 					"first": "initiator",
-					"operator": ">",
-					"value": -1
+					"operator": ">=",
+					"value": 0
 				},
 				{
 					"class": "attribute",
 					"type": "stamina",
 					"first": "initiator",
-					"operator": ">",
-					"value": -1
+					"operator": ">=",
+					"value": 0
 				}
 			],
 			"displayName" : "Analyze data",
@@ -297,7 +297,7 @@
 					"type" : "health",
 					"first" : "hero",
 					"operator" : "+",
-					"value" : 100
+					"value" : 150
 				}
 			]
 		},
@@ -312,7 +312,7 @@
 					"type" : "stamina",
 					"first" : "hero",
 					"operator" : "+",
-					"value" : 100
+					"value" : 500
 				}
 			]
 		},

@@ -257,12 +257,12 @@
                 goodTerminals = getTerminalActionsFromNonTerminal(rootAction, isAccepted, numActionsPerGroup, uniqueBindings, cast);
                 if (goodTerminals === undefined) { // this means we didn't find any good actions!
                     console.log("found no valid actions for init: " + initiator + ", respond: " + responder + ", for volition ", volition);
-                    return;
+                    continue;
                 }
 
                 //#CODEREVIEW: Maybe just return goodTerminals right here.
 
-                returnTerminalList = goodTerminals; //Ok, so, it said temp temp temp, but actually I think this is pretty much exactly what we want!
+                returnTerminalList = returnTerminalList.concat(goodTerminals); //Ok, so, it said temp temp temp, but actually I think this is pretty much exactly what we want!
             }
         }
 
