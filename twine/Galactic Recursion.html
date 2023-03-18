@@ -146,16 +146,55 @@ No, there are no obstacles or dangers. It&#39;s a straight shot to the supplies,
 
 [[Calibrate my next move......]]</tw-passagedata><tw-passagedata pid="4" name="Analyze data" tags="" position="425,150" size="100,100">(set: $health to $health - 50)
 (set: $stamina to $stamina - 50)
+(set: $suspicion to $suspicion - 50)
+(set: $healthWorry to $healthWorry + 50)
+(set: $staminaWorry to $staminaWorry - 10)
+(set: $op1 to false)
+(set: $op2 to false)
 
-The hero decides to analyze data to find evidence on the suspect. It will take some stamina and the suspect is still out there. Was it the right move? What should he do next?
+The fate of your crew and the success of your mission depend on your ability to uncover the truth. But where do you begin? What kind of data will give you the answers you seek?
 
+Option 1: The security camera footage. This critical piece of evidence will require you to search the ship and locate the security camera system. Will you be able to navigate the twists and turns of the ship to find the footage you need?
 
+Option 2: The communication logs. This key piece of data could hold the key to understanding what really happened. But to access it, you&#39;ll need to locate and hack into the communication system. Will you be able to overcome the challenges and obstacles in your path to uncover the truth?
 
+[Option 1]&lt;setOp1|
+(click: ?setOp1)[
+(set: $op1 to true)
+]
 
-[[Calibrate my next move......]]</tw-passagedata><tw-passagedata pid="5" name="Find a suspect" tags="" position="625,375" size="100,100">(set: $health to $health - 50)
+[Option 2]&lt;setOp2|
+(click: ?setOp2)[
+(set: $op2 to true)
+]
+
+[[Calibrate my next move......]]</tw-passagedata><tw-passagedata pid="5" name="Find a suspect" tags="" position="725,325" size="100,100">(set: $health to $health - 50)
 (set: $stamina to $stamina - 50)
+(set: $suspicion to $suspicion + 150)
+(set: $healthWorry to $healthWorry - 20)
+(set: $staminaWorry to $staminaWorry + 30)
+(set: $yes to false)
+(set: $no to false)
 
-The hero decides to report the suspect. But will he have enough health and stamina leftover. Was it the right move? What should he do next?
+As you sift through the wreckage of the ship, anger and fear course through your veins. Who could have orchestrated such a brutal attack on your crew and your mission? Your mind races as you consider the possibilities, but you must focus on finding the culprit before they strike again.
+
+Who do you suspect is responsible for this heinous act? Is it someone from your own crew, someone you&#39;ve trusted and worked alongside for months or even years? Or is it an unknown enemy, lurking in the shadows and waiting to strike again?
+
+Your first option is a crew member with a history of insubordination and reckless behavior. Could their past behavior have escalated to the point of sabotage and violence? Or is it simply a coincidence that they have a checkered past?
+
+Your second option is an unknown entity or organization. This option raises even more questions: who are they? Why would they target your mission? And how did they manage to breach your ship&#39;s defenses?
+
+Your heart pounds in your chest as you contemplate the possibilities. You know that time is of the essence, and that the fate of your crew and your mission hang in the balance. You must make a choice and act quickly, before it&#39;s too late.
+
+[Option 1]&lt;setOne|
+(click: ?setOne)[
+(set: $one to true)
+]
+
+[Option 2]&lt;setTwo|
+(click: ?setTwo)[
+(set: $two to true)
+]
 
 
 [[Calibrate my next move......]]</tw-passagedata><tw-passagedata pid="6" name="Successfully Saving Everyone" tags="" position="900,100" size="100,100">Hero is able to save everyone.
@@ -175,6 +214,12 @@ The hero decides to report the suspect. But will he have enough health and stami
 {(if: $storage and $no)[(set: $stamina to 0)(go-to: &quot;Failing and Dying&quot;)]}
 {(if: $medical and $yes)[(go-to: &quot;Analyze data&quot;)]}
 {(if: $medical and $no)[(go-to: &quot;Find a suspect&quot;)]}
+
+{(if: $one)[(set: $stamina to 0)(go-to: &quot;&quot;)]}
+{(if: $two)[(set: $stamina to $stamina + 25)(go-to: &quot;Sucessfully Saving Everyone&quot;)]}
+
+{(if: $op1)[(set: $stamina to 0)(go-to: &quot;Gather supplies&quot;)]}
+{(if: $op2)[(set: $stamina to $stamina + 25)(go-to: &quot;Repair Oxygen&quot;)]}
 </tw-passagedata><tw-passagedata pid="9" name="Initiate Sequence" tags="" position="250,25" size="100,100">(go-to: $next)</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
