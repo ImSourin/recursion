@@ -12,8 +12,8 @@
 <tw-storydata name="Galactic Recursion" startnode="1" creator="Twine" creator-version="2.6.2" format="Harlowe" format-version="3.3.5" ifid="DEC1B4CE-0167-486E-8F8E-17424EDFC1E4" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Galactic recursion" tags="" position="250,200" size="100,100">&lt;img src =&quot;https://cdn.pixabay.com/photo/2020/04/11/10/51/rocket-5029889_1280.png&quot;&gt;
 
 (set: $name to (prompt:&quot;Enter your name:  &quot;, &quot;Nova&quot;))
-(set: $health to 50)
-(set: $stamina to 50)
+(set: $health to 100)
+(set: $stamina to 100)
 (set: $suspicion to 100)
 (set: $healthWorry to 100)
 (set: $staminaWorry to 100)
@@ -64,6 +64,9 @@ c. [Discuss your concerns with another crew member before taking action.]&lt;set
 (set: $torch to false)
 (set: $breaks to false)
 (set: $push to false)
+(set: $suspicion to $suspicion + 50)
+(set: $healthWorry to $healthWorry - 50)
+(set: $staminaWorry to $staminaWorry + 10)
 
 The oxygen system has been damaged in the attack and the lives of your crew depend on your ability to repair it. But what tools will you need to fix it in time?
 
@@ -97,65 +100,82 @@ What do you choose?
 (set: $push to true)
 ]
 
-[[Calibrate my next move......]]</tw-passagedata><tw-passagedata pid="3" name="Gather supplies" tags="" position="625,100" size="100,100">(set: $stamina to $stamina + 200)
+[[Calibrate my next move......]]</tw-passagedata><tw-passagedata pid="3" name="Gather supplies" tags="" position="550,250" size="100,100">(set: $stamina to $stamina + 200)
 (set: $health to $health - 50)
 (set: $stamina to $stamina - 50)
+(set: $suspicion to $suspicion + 70)
+(set: $healthWorry to $healthWorry - 10)
+(set: $staminaWorry to $staminaWorry + 20)
+(set: $storage to false)
+(set: $medical to false)
+(set: $yes to false)
+(set: $no to false)
 
-The hero decides to gather supplies. It will take some stamina and the suspect is still out there. Was it the right move? What should he do next?
-
-(if:(history: where its name contains &quot;Repair Oxygen&quot;)&#39;s length is 0)[[Repair Oxygen]]
-
-(if:(history: where its name contains &quot;Analyze data&quot;)&#39;s length is 0)[[Analyze data]]
-
-(if:(history: where its name contains &quot;Find a suspect&quot;)&#39;s length is 0)[[Find a suspect]]
-
-{(if:$health &lt; 0 or $stamina &lt; 0)[(go-to: &quot;Failing and Dying&quot;)]}
+As you gasp for air in the rapidly depleting oxygen of your spaceship, you realize that you must act quickly if you want to save yourself and your crew. You need to gather supplies, but where can you find them? Your mind races as you consider your options.
 
 
-(more:)[
-{(if:$health &gt;= 0 and $stamina &gt;= 0)[(go-to: &quot;Successfully Saving Everyone&quot;)]}
-]</tw-passagedata><tw-passagedata pid="4" name="Analyze data" tags="" position="375,425" size="100,100">(set: $health to $health - 50)
+The storage room. It&#39;s your best bet for finding the supplies you need to fix the oxygen system, but it&#39;s also the most heavily guarded area of the ship. You&#39;ll need to watch out for security robots that could attack at any moment
+
+The medical bay. It&#39;s not as well-stocked as the storage room, but it&#39;s also not as dangerous. You might be able to find some basic medical supplies to help you on your mission
+
+[The storage room]&lt;setStorage|
+(click: ?setStorage)[
+(set: $storage to true)
+]
+
+[The medical bay]&lt;setMedical|
+(click: ?setMedical)[
+(set: $medical to true)
+]
+
+Your heart races as you consider the risks and rewards of each option. But wait, there&#39;s more to consider. Are there any obstacles or dangers to watch out for while collecting supplies?
+
+Yes, there are security robots patrolling the area. You&#39;ll need to move quickly and quietly to avoid detection and make it out alive.
+
+No, there are no obstacles or dangers. It&#39;s a straight shot to the supplies, but you&#39;ll need to move fast if you want to get there before the oxygen runs out.
+
+[Yes]&lt;setYes|
+(click: ?setYes)[
+(set: $yes to true)
+]
+
+[No]&lt;setNo|
+(click: ?setNo)[
+(set: $no to true)
+]
+
+[[Calibrate my next move......]]</tw-passagedata><tw-passagedata pid="4" name="Analyze data" tags="" position="425,150" size="100,100">(set: $health to $health - 50)
 (set: $stamina to $stamina - 50)
 
 The hero decides to analyze data to find evidence on the suspect. It will take some stamina and the suspect is still out there. Was it the right move? What should he do next?
 
-(if:(history: where its name contains &quot;Repair Oxygen&quot;)&#39;s length is 0)[[Repair Oxygen]]
-
-(if:(history: where its name contains &quot;Gather supplies&quot;)&#39;s length is 0)[[Gather supplies]]
-
-(if:(history: where its name contains &quot;Find a suspect&quot;)&#39;s length is 0)[[Find a suspect]]
-
-{(if:$health &lt; 0 or $stamina &lt; 0)[(go-to: &quot;Failing and Dying&quot;)]}
 
 
-(more:)[
-{(if:$health &gt;= 0 and $stamina &gt;= 0)[(go-to: &quot;Successfully Saving Everyone&quot;)]}
-]
-</tw-passagedata><tw-passagedata pid="5" name="Find a suspect" tags="" position="625,400" size="100,100">(set: $health to $health - 50)
+
+[[Calibrate my next move......]]</tw-passagedata><tw-passagedata pid="5" name="Find a suspect" tags="" position="625,375" size="100,100">(set: $health to $health - 50)
 (set: $stamina to $stamina - 50)
 
 The hero decides to report the suspect. But will he have enough health and stamina leftover. Was it the right move? What should he do next?
 
-(if:(history: where its name contains &quot;Repair Oxygen&quot;)&#39;s length is 0)[[Repair Oxygen]]
 
-(if:(history: where its name contains &quot;Gather supplies&quot;)&#39;s length is 0)[[Gather supplies]]
-
-(if:(history: where its name contains &quot;Analyze data&quot;)&#39;s length is 0)[[Analyze data]]
-
-{(if:$health &lt; 0 or $stamina &lt; 0)[(go-to: &quot;Failing and Dying&quot;)]}
-
-
-(more:)[
-{(if:$health &gt;= 0 and $stamina &gt;= 0)[(go-to: &quot;Successfully Saving Everyone&quot;)]}
-]</tw-passagedata><tw-passagedata pid="6" name="Successfully Saving Everyone" tags="" position="800,150" size="100,100">Hero is able to save everyone.
+[[Calibrate my next move......]]</tw-passagedata><tw-passagedata pid="6" name="Successfully Saving Everyone" tags="" position="900,100" size="100,100">Hero is able to save everyone.
 
 (print: &quot;Health:&quot; + (str:  $health))
-(print: &quot;Stamina:&quot; + (str:  $stamina))</tw-passagedata><tw-passagedata pid="7" name="Failing and Dying" tags="" position="800,300" size="100,100">The ship erupted in a fiery explosion, signaling the end of your journey and the realization that you had fought a valiant fight, but ultimately, it was not enough.
+(print: &quot;Stamina:&quot; + (str:  $stamina))</tw-passagedata><tw-passagedata pid="7" name="Failing and Dying" tags="" position="900,300" size="100,100">The ship erupted in a fiery explosion, signaling the end of your journey and the realization that you had fought a valiant fight, but ultimately, it was not enough.
 
 (print: &quot;Health:&quot; + (str:  $health))
-(print: &quot;Stamina:&quot; + (str:  $stamina))</tw-passagedata><tw-passagedata pid="8" name="Calibrate my next move......" tags="" position="800,0" size="100,100">{(if:$health &lt; 0 or $stamina &lt; 0)[(go-to: &quot;Failing and Dying&quot;)]}
+(print: &quot;Stamina:&quot; + (str:  $stamina))</tw-passagedata><tw-passagedata pid="8" name="Calibrate my next move......" tags="" position="725,0" size="100,100">{(if:$health &lt;= 0 or $stamina &lt;= 0)[(go-to: &quot;Failing and Dying&quot;)]}
+
 {(if: $toolkit and $breaks)[(set: $stamina to $stamina + 25)(go-to: &quot;Gather supplies&quot;)]}
-{(if: $toolkit and $push)[(set: $stamina to 0)(go-to: &quot;Failing and Dying&quot;)]}</tw-passagedata><tw-passagedata pid="9" name="Initiate Sequence" tags="" position="250,50" size="100,100">(go-to: $next)</tw-passagedata></tw-storydata>
+{(if: $toolkit and $push)[(set: $stamina to 0)(go-to: &quot;Failing and Dying&quot;)]}
+{(if: $torch and $breaks)[(go-to: &quot;Analyze data&quot;)]}
+{(if: $torch and $push)[(go-to: &quot;Find a suspect&quot;)]}
+
+{(if: $storage and $yes)[(set: $stamina to $stamina + 25)(go-to: &quot;Sucessfully Saving Everyone&quot;)]}
+{(if: $storage and $no)[(set: $stamina to 0)(go-to: &quot;Failing and Dying&quot;)]}
+{(if: $medical and $yes)[(go-to: &quot;Analyze data&quot;)]}
+{(if: $medical and $no)[(go-to: &quot;Find a suspect&quot;)]}
+</tw-passagedata><tw-passagedata pid="9" name="Initiate Sequence" tags="" position="250,25" size="100,100">(go-to: $next)</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
