@@ -1,7 +1,7 @@
 {
   "questions": [
     {
-      "text": "The clock is ticking and the oxygen levels are dropping rapidly. What is your top priority to stay alive?",
+      "text": "There has been an attack on the spaceship. You need to save the crew members and find out how did it happen. Specifically, you need to \n\nRepair Oxygen\nGather supplies\nAnalyze data\nFind a suspect\n\nOnly issue is that your oxygen and stamina will keep on decreasing with time. So, you must carefully choose which task to do first.",
       "visited": [],
       "optionLabels": [
         "Maintaining your own health and energy levels",
@@ -46,11 +46,11 @@
       "id": "q3"
     },
     {
-      "text": "You've suspected for a while now that someone on the crew is up to no good. It's time to confront them and get to the bottom of things. How do you approach the situation?",
+      "text": "As you sift through the wreckage of the ship, anger and fear course through your veins. Who could have orchestrated such a brutal attack on your crew and your mission? Your mind races as you consider the possibilities, but you must focus on finding the culprit before they strike again.\n\nWho do you suspect is responsible for this heinous act? Is it someone from your own crew, someone you've trusted and worked alongside for months or even years? Or is it an unknown enemy, lurking in the shadows and waiting to strike again?",
       "visited": ["REPAIR_O2", "GATHER_SUPPLIES"],
       "optionLabels": [
-        "Discuss your concerns with another crew member before taking action",
-        "Confront the crew member immediately and demand answers"
+        "Your first option is a crew member with a history of insubordination and reckless behavior. Could their past behavior have escalated to the point of sabotage and violence? Or is it simply a coincidence that they have a checkered past?",
+        "Your second option is an unknown entity or organization. This option raises even more questions: who are they? Why would they target your mission? And how did they manage to breach your ship's defenses?"
       ],
       "optionActions": [
         "ANALYZE_DATA",
@@ -59,11 +59,11 @@
       "id": "q4"
     },
     {
-      "text": "test question",
+      "text": "As you gasp for air in the rapidly depleting oxygen of your spaceship, you realize that you must act quickly if you want to save yourself and your crew. You need to gather supplies, but where can you find them? Your mind races as you consider your options.",
       "visited": ["REPAIR_O2"],
       "optionLabels": [
-        "option1",
-        "option2"
+        "The storage room. It's your best bet for finding the supplies you need to fix the oxygen system, but it's also the most heavily guarded area of the ship. You'll need to watch out for security robots that could attack at any moment",
+        "The medical bay. It's not as well-stocked as the storage room, but it's also not as dangerous. You might be able to find some basic medical supplies to help you on your mission"
       ],
       "optionActions": [
         "INCREASE_STAMINA_WORRY",
@@ -72,11 +72,11 @@
       "id": "q5"
     },
     {
-      "text": "test question",
+      "text": "The fate of your crew and the success of your mission depend on your ability to uncover the truth. But where do you begin? What kind of data will give you the answers you seek?",
       "visited": ["GATHER_SUPPLIES"],
       "optionLabels": [
-        "option1",
-        "option2"
+        "Option 1: The security camera footage. This critical piece of evidence will require you to search the ship and locate the security camera system. Will you be able to navigate the twists and turns of the ship to find the footage you need?",
+        "Option 2: The communication logs. This key piece of data could hold the key to understanding what really happened. But to access it, you'll need to locate and hack into the communication system. Will you be able to overcome the challenges and obstacles in your path to uncover the truth?"
       ],
       "optionActions": [
         "INCREASE_HEALTH_WORRY",
