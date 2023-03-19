@@ -100,12 +100,12 @@
       "id": "q7"
     },
     {
-      "text": "test question",
+      "text": "The fate of the mission rests on your shoulders as you search for the critical data that will help you uncover the truth behind the attack on your spaceship. Where can you find the information you need to save your crew and complete your mission?",
       "visited": ["FIND_SUSPECT"],
       "optionLabels": [
-        "option1",
-        "option2",
-        "option3"
+        "The control room, where the fate of the mission rests in your ability to navigate through the dark corridors and avoid any dangers that may lurk in the shadows. You must find and enter the control room to access the vital data that could save your crew.",
+        "The captain's quarters, the most heavily guarded area of the ship, where the enemy may be lying in wait to catch you off guard. You must use your stealth and cunning to make your way to the quarters, avoiding or neutralizing any threats along the way. Only then can you uncover the data that may hold the key to saving your crew and completing your mission.",
+        "The engineering bay, a labyrinthine maze of pipes and wires that may lead to the answers you seek. But beware, as the bay may be crawling with dangerous creatures or booby traps set by the enemy. You must navigate through the twists and turns of the bay to uncover the data you need."
       ],
       "optionActions": [
         "INCREASE_HEALTH_WORRY",
