@@ -57,7 +57,7 @@ label REPAIR_O2:
     hide shaw scared
     with dissolve
 
-    "The protagonist rushes to repair the oxygen supply, but it takes time and his stamina keeps decreasing. Finally, he is successful in repairing the oxygen supply"
+    "The protagonist rushes to repair the oxygen supply, but it takes time and his stamina keeps decreasing. Finally, she is successful in repairing the oxygen supply"
     
     show shaw happy at left 
     with dissolve
