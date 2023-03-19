@@ -141,11 +141,12 @@
       "id": "q10"
     },
     {
-      "text": "test qn",
+      "text": "As you attempt to access the data, you realize that there may be obstacles in your way. What security measures are in place to prevent you from accessing the information you need?",
       "visited": ["GATHER_SUPPLIES", "FIND_SUSPECT"],
       "optionLabels": [
-        "Discuss your concerns with another crew member before taking action",
-        "Confront the crew member immediately and demand answers"
+        "Option 1: No, the data is easily accessible. You have a clear path to the information you need, but be wary - sometimes the easiest path can be the most dangerous.",
+        "Option 2: Yes, the data is encrypted and requires a password. You'll need to use your wits to solve a complex puzzle and crack the code before you can access the valuable data."
+
       ],
       "optionActions": [
         "INCREASE_HEALTH_WORRY",
