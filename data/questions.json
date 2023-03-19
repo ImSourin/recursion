@@ -1,7 +1,7 @@
 {
   "questions": [
     {
-      "text": "There has been an attack on the spaceship. You need to save the crew members and find out how did it happen. Specifically, you need to \n\nRepair Oxygen\nGather supplies\nAnalyze data\nFind a suspect\n\nOnly issue is that your oxygen and stamina will keep on decreasing with time. So, you must carefully choose which task to do first.",
+      "text": "There has been an attack on the spaceship. You need to save the crew members and find out how did it happen. Specifically, you need to Repair Oxygen, Gather supplies, Analyze data or Find a suspect. Only issue is that your oxygen and stamina will keep on decreasing with time. So, you must carefully choose which task to do first.",
       "visited": [],
       "optionLabels": [
         "Maintaining your own health and energy levels",
