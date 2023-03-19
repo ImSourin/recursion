@@ -115,11 +115,11 @@
       "id": "q8"
     },
     {
-      "text": "test qn",
+      "text": "You have a suspect in sight and the fate of the spaceship rests on your ability to apprehend them. The clock is ticking and every second counts. Where will you find the supplies you need to confront them?",
       "visited": ["REPAIR_O2", "FIND_SUSPECT"],
       "optionLabels": [
-        "Discuss your concerns with another crew member before taking action",
-        "Confront the crew member immediately and demand answers"
+        "The armory, a heavily guarded room filled with powerful weapons and ammunition. The path to the armory is treacherous, and the player must use their wits to navigate past security measures and guards.",
+        "The cafeteria, where the player can stock up on food and water to sustain them during the fight. The cafeteria is a dangerous place, and the player must be on the lookout for any traps or ambushes set by the suspect."
       ],
       "optionActions": [
         "INCREASE_STAMINA_WORRY",
@@ -155,11 +155,11 @@
       "id": "q11"
     },
     {
-      "text": "test qn",
+      "text": "As you struggles to push through the fear and uncertainty of the situation, you desperately search for something to hold onto. Suddenly, a memory comes to mind - a moment of happiness that fills you with strength and hope. Where do you turn to in your mind for this memory?",
       "visited": ["GATHER_SUPPLIES", "ANALYZE_DATA"],
       "optionLabels": [
-        "Discuss your concerns with another crew member before taking action",
-        "Confront the crew member immediately and demand answers"
+        "A memory of a successful mission with her crew, where they worked together seamlessly and accomplished their goal, reminding her of the strength and resilience of her team.",
+        "A childhood memory of playing in the park with her family, surrounded by love and laughter."
       ],
       "optionActions": [
         "INCREASE_HEALTH_WORRY",
