@@ -24,7 +24,7 @@ label start:
     hide shaw scared
     with dissolve
 
-    "The protagonist looks around and sees that the spaceship has been damaged"
+    "Shaw looks around and sees that the spaceship has been damaged"
     
     show shaw neutral at left
     with dissolve
@@ -47,7 +47,7 @@ label REPAIR_O2:
     scene bg oxygen_room
     with fade
 
-    "The protagonist checks the oxygen levels and sees that they are low"
+    "Shaw checks the oxygen levels and sees that they are low"
 
     show shaw scared at left 
     with dissolve
@@ -57,7 +57,7 @@ label REPAIR_O2:
     hide shaw scared
     with dissolve
 
-    "The protagonist rushes to repair the oxygen supply, but it takes time and his stamina keeps decreasing. Finally, she is successful in repairing the oxygen supply"
+    "Shaw rushes to repair the oxygen supply, but it takes time and his stamina keeps decreasing. Finally, she is successful in repairing the oxygen supply"
     
     show shaw happy at left 
     with dissolve
@@ -110,7 +110,7 @@ label ANALYZE_DATA:
     hide shaw neutral at left
     with dissolve
 
-    "The protagonist heads to the computer room and starts analyzing the data logs. As they sift through the logs, they notice something unusual."
+    "Shaw heads to the computer room and starts analyzing the data logs. As they sift through the logs, they notice something unusual."
 
     show shaw surprised at left
     with dissolve
@@ -137,7 +137,7 @@ label FIND_SUSPECT:
     hide shaw angry
     with dissolve
 
-    "The protagonist starts searching the ship for any clues that might lead them to the suspect. While searching, they come across something suspicious"
+    "Shaw starts searching the ship for any clues that might lead them to the suspect. While searching, they come across something suspicious"
 
     show shaw surprised at left 
     with dissolve
@@ -153,7 +153,7 @@ label FIND_SUSPECT:
     hide shaw neutral
     with dissolve
 
-    "The protagonist takes a moment to rest and regain their strength. While resting, they notice something strange out of the corner of their eye."
+    "Shaw takes a moment to rest and regain their strength. While resting, they notice something strange out of the corner of their eye."
 
     show shaw surprised at left
     with dissolve
@@ -169,16 +169,13 @@ label FIND_SUSPECT:
         }).text)[0]['value']
 
     if confidence == 100:
-        show shaw happy 
-        with dissolve
-
-        p "I've gathered supplies, analyzed data, and found a suspect. It turns out that one of our crew members was responsible for the attack. We've arrested the traitor and secured the ship. We're safe for now, but who knows what else could happen out here in space. I need to stay vigilant."
+        p "It turns out that one of our crew members was responsible for the attack. We've arrested the traitor and secured the ship. We're safe for now, but who knows what else could happen out here in space. I need to stay vigilant."
     else:
 
         show shaw sad at left
         with dissolve
 
-        p "Oops wrong suspect. no evidence"
+        p "Oops, there's nothing behind it. I need to keep searching for clues and hidden paths to solve this."
 
     call QUESTION
 
@@ -240,13 +237,17 @@ label DIE_STAMINA:
     jump DIE
 
 label WIN:
+    show shaw happy at left
+    with dissolve
     python:
         renpy.set_return_stack([])
-        narrator("WIN")
+        narrator("Congratulations! You have successfully completed the mission and emerged victorious. Your skills and strategy have paid off. Enjoy your well-earned win!")
     return
 
 label DIE:
+    show shaw sad at left
+    with dissolve
     python:
         renpy.set_return_stack([])
-        narrator("DIE")
+        narrator("Sorry, your mission was unsuccessful and you have failed to accomplish the goal.")
     return
