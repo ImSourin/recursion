@@ -85,12 +85,12 @@
       "id": "q6"
     },
     {
-      "text": "test question",
+      "text": "Your heart races as you consider the risks and rewards of each option. But wait, there's more to consider. Are there any obstacles or dangers to watch out for while collecting supplies?",
       "visited": ["ANALYZE_DATA"],
       "optionLabels": [
-        "option1",
-        "option2",
-        "option3"
+        "No, there are no obstacles or dangers. It's a straight shot to the supplies, but you'll need to move fast if you want to get there before the oxygen runs out.",
+        "Yes, there are security robots patrolling the area. You'll need to move quickly and quietly to avoid detection and make it out alive.",
+        "I don't know, just stay put."
       ],
       "optionActions": [
         "INCREASE_HEALTH_WORRY",
@@ -128,11 +128,11 @@
       "id": "q9"
     },
     {
-      "text": "test qn",
+      "text": "The oxygen system is failing and time is running out. How will you manage your stamina while repairing it?",
       "visited": ["REPAIR_O2", "ANALYZE_DATA"],
       "optionLabels": [
-        "Discuss your concerns with another crew member before taking action",
-        "Confront the crew member immediately and demand answers"
+        "Take breaks periodically to catch your breath and recover stamina. But every moment spent resting is a moment lost, and the lives of your crew hang in the balance.",
+        "Push through and work as quickly as possible, sacrificing your own stamina for speed. The fate of your mission and your team rests on your shoulders, and there's no time to waste."
       ],
       "optionActions": [
         "INCREASE_HEALTH_WORRY",
