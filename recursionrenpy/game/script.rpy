@@ -36,6 +36,8 @@ label start:
     show shaw neutral at left
     with dissolve
 
+    "There has been an attack on the spaceship. You need to save the crew members and find out how did it happen. Specifically, you need to Repair Oxygen, Gather supplies, Analyze data and Find a suspect."
+
     # 3 questions?
     call QUESTION
     call QUESTION
@@ -48,7 +50,7 @@ label REPAIR_O2:
     scene bg oxygen_room
     with fade
 
-    "Shaw checks the oxygen levels and sees that they are low"
+    "Shaw checks the oxygen levels and sees that they are low."
 
     show shaw scared at left 
     with dissolve
@@ -63,7 +65,7 @@ label REPAIR_O2:
     show shaw happy at left 
     with dissolve
 
-    p "Phew, I've managed to fix the oxygen supply. I can breathe a sigh of relief for now, but there's still a lot to do. What should I do next?"
+    p "Phew, I've managed to fix the oxygen supply. I can breathe a sigh of relief for now, but that's just one piece of the puzzle."
 
     show shaw neutral at left
     with dissolve
@@ -120,6 +122,13 @@ label ANALYZE_DATA:
     show shaw neutral at left
     with dissolve
 
+    python:
+        unvisited_nodes = json.loads(requests.get(BASE_URL+'getUnvisitedNodes').text)
+        if "FIND_SUSPECT" not in unvisited_nodes:
+            p("But it's all in vain now. I shouldn't have accused John so early.")
+        else:
+            p("I think I found who it was!!")
+
     call QUESTION
 
     jump TRANSITION
@@ -169,14 +178,16 @@ label FIND_SUSPECT:
             'type': 'confidence'
         }).text)[0]['value']
 
+    "Shaw accuses John since he was the last one to log in to the servers."
+
     if confidence == 100:
-        p "It turns out that one of our crew members was responsible for the attack. We've arrested the traitor and secured the ship. We're safe for now, but who knows what else could happen out here in space. I need to stay vigilant."
+        p "It turns out that John was responsible for the attack. We've arrested the traitor and secured the ship. We're safe for now, but who knows what else could happen out here in space. I need to stay vigilant."
     else:
 
         show shaw sad at left
         with dissolve
 
-        p "Oops, there's nothing behind it. I need to keep searching for clues and hidden paths to solve this."
+        p "Aah, I'm sorry! I shouldn't have accused you before being confident. I should have analyzed the data first."
 
     call QUESTION
 
@@ -252,5 +263,5 @@ label DIE:
     with dissolve
     python:
         renpy.set_return_stack([])
-        narrator("Sorry, your mission was unsuccessful and you have failed to accomplish the goal.")
+        narrator("Sorry, your mission was unsuccessful and you have failed to accomplish the goals.")
     return

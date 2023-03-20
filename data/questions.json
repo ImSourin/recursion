@@ -1,7 +1,7 @@
 {
   "questions": [
     {
-      "text": "There has been an attack on the spaceship. You need to save the crew members and find out how did it happen. Specifically, you need to Repair Oxygen, Gather supplies, Analyze data or Find a suspect. Only issue is that your oxygen and stamina will keep on decreasing with time. So, you must carefully choose which task to do first.",
+      "text": "The only issue is that your oxygen and stamina will keep on decreasing with time. So, you must carefully choose which task to do first.",
       "visited": [],
       "optionLabels": [
         "Maintaining your own health and energy levels",
@@ -21,12 +21,12 @@
       "optionLabels": [
         "Your physical safety and well-being",
         "Discovering the source of the energy signature",
-        "Assessing the potential danger of the situation"
+        "Assessing the potential supplies we have"
       ],
       "optionActions": [
         "INCREASE_HEALTH_WORRY",
-        "INCREASE_STAMINA_WORRY",
-        "INCREASE_SUSPICION"
+        "INCREASE_SUSPICION",
+        "INCREASE_STAMINA_WORRY"
       ],
       "id": "q2"
     },
@@ -35,7 +35,7 @@
       "visited": [],
       "optionLabels": [
         "Discuss your concerns with another crew member before taking action.",
-        "Check whether Oxygen levels can be improved",
+        "Check whether the other crew members are facing breathing issues",
         "Check whether there's a pod to escape"
       ],
       "optionActions": [
@@ -47,23 +47,28 @@
     },
     {
       "text": "As you sift through the wreckage of the ship, anger and fear course through your veins. Who could have orchestrated such a brutal attack on your crew and your mission? Your mind races as you consider the possibilities, but you must focus on finding the culprit before they strike again.\n\nWho do you suspect is responsible for this heinous act? Is it someone from your own crew, someone you've trusted and worked alongside for months or even years? Or is it an unknown enemy, lurking in the shadows and waiting to strike again?",
-      "visited": ["REPAIR_O2", "GATHER_SUPPLIES"],
+      "visited": [
+        "REPAIR_O2",
+        "GATHER_SUPPLIES"
+      ],
       "optionLabels": [
         "Your first option is a crew member with a history of insubordination and reckless behavior. Could their past behavior have escalated to the point of sabotage and violence? Or is it simply a coincidence that they have a checkered past?",
         "Your second option is an unknown entity or organization. This option raises even more questions: who are they? Why would they target your mission? And how did they manage to breach your ship's defenses?"
       ],
       "optionActions": [
-        "ANALYZE_DATA",
-        "FIND_SUSPECT"
+        "FIND_SUSPECT",
+        "ANALYZE_DATA"
       ],
       "id": "q4"
     },
     {
-      "text": "As you gasp for air in the rapidly depleting oxygen of your spaceship, you realize that you must act quickly if you want to save yourself and your crew. You need to gather supplies, but where can you find them? Your mind races as you consider your options.",
-      "visited": ["REPAIR_O2"],
+      "text": "As you finally have fresh air, you realize that you must act quickly if you want to save yourself and your crew. You need to gather supplies and find the suspect, but where can you find them? Your mind races as you consider your options.",
+      "visited": [
+        "REPAIR_O2"
+      ],
       "optionLabels": [
         "The storage room. It's your best bet for finding the supplies you need to fix the oxygen system, but it's also the most heavily guarded area of the ship. You'll need to watch out for security robots that could attack at any moment",
-        "The medical bay. It's not as well-stocked as the storage room, but it's also not as dangerous. You might be able to find some basic medical supplies to help you on your mission"
+        "The security camera footage. This critical piece of evidence will require you to search the ship and locate the security camera system. Will you be able to navigate the twists and turns of the ship to find the footage you need?"
       ],
       "optionActions": [
         "INCREASE_STAMINA_WORRY",
@@ -72,11 +77,13 @@
       "id": "q5"
     },
     {
-      "text": "The fate of your crew and the success of your mission depend on your ability to uncover the truth. But where do you begin? What kind of data will give you the answers you seek?",
-      "visited": ["GATHER_SUPPLIES"],
+      "text": "As you gasp for air in the rapidly depleting oxygen of your spaceship, you realize that the fate of your crew and the success of your mission depend on your ability to uncover the truth. But where do you begin?",
+      "visited": [
+        "GATHER_SUPPLIES"
+      ],
       "optionLabels": [
-        "Option 1: The security camera footage. This critical piece of evidence will require you to search the ship and locate the security camera system. Will you be able to navigate the twists and turns of the ship to find the footage you need?",
-        "Option 2: The communication logs. This key piece of data could hold the key to understanding what really happened. But to access it, you'll need to locate and hack into the communication system. Will you be able to overcome the challenges and obstacles in your path to uncover the truth?"
+        "The medical bay. You might be able to find some basic medical supplies to help you on your mission",
+        "The communication logs. This key piece of data could hold the key to understanding what really happened. But to access it, you'll need to locate and hack into the communication system. Will you be able to overcome the challenges and obstacles in your path to uncover the truth?"
       ],
       "optionActions": [
         "INCREASE_HEALTH_WORRY",
@@ -85,68 +92,80 @@
       "id": "q6"
     },
     {
-      "text": "Your heart races as you consider the risks and rewards of each option. But wait, there's more to consider. Are there any obstacles or dangers to watch out for while collecting supplies?",
-      "visited": ["ANALYZE_DATA"],
+      "text": "Your heart races as you consider the risks and rewards of each option. What do you feel is the most immediate threat?",
+      "visited": [
+        "ANALYZE_DATA"
+      ],
       "optionLabels": [
-        "No, there are no obstacles or dangers. It's a straight shot to the supplies, but you'll need to move fast if you want to get there before the oxygen runs out.",
-        "Yes, there are security robots patrolling the area. You'll need to move quickly and quietly to avoid detection and make it out alive.",
-        "I don't know, just stay put."
+        "It's a straight shot to the supplies, but I'll need to move fast if you want to get there before the oxygen runs out.",
+        "The oxygen supply chamber is very far away but someone has to fix the pressure.",
+        "I'm very afraid of an intruder. Maybe an alien!!"
       ],
       "optionActions": [
+        "INCREASE_STAMINA_WORRY",
         "INCREASE_HEALTH_WORRY",
-        "INCREASE_SUSPICION",
-        "INCREASE_STAMINA_WORRY"
+        "INCREASE_SUSPICION"
       ],
       "id": "q7"
     },
     {
-      "text": "The fate of the mission rests on your shoulders as you search for the critical data that will help you uncover the truth behind the attack on your spaceship. Where can you find the information you need to save your crew and complete your mission?",
-      "visited": ["FIND_SUSPECT"],
+      "text": "The clock is ticking and every second counts. It seems I'm already out of breath. The fate of the mission rests on your shoulders as you search for the critical data that will help you uncover the truth behind the attack on your spaceship. How do you save your crew and complete your mission?",
+      "visited": [
+        "FIND_SUSPECT"
+      ],
       "optionLabels": [
-        "The control room, where the fate of the mission rests in your ability to navigate through the dark corridors and avoid any dangers that may lurk in the shadows. You must find and enter the control room to access the vital data that could save your crew.",
-        "The captain's quarters, the most heavily guarded area of the ship, where the enemy may be lying in wait to catch you off guard. You must use your stealth and cunning to make your way to the quarters, avoiding or neutralizing any threats along the way. Only then can you uncover the data that may hold the key to saving your crew and completing your mission.",
-        "The engineering bay, a labyrinthine maze of pipes and wires that may lead to the answers you seek. But beware, as the bay may be crawling with dangerous creatures or booby traps set by the enemy. You must navigate through the twists and turns of the bay to uncover the data you need."
+        "Go to the control room to get the keys for the supply room.",
+        "Go to the medical station to get temporary oxygen to extend your life.",
+        "Go to the engineering bay. You must navigate through the twists and turns of the bay to uncover the data you need."
       ],
       "optionActions": [
+        "INCREASE_STAMINA_WORRY",
         "INCREASE_HEALTH_WORRY",
-        "INCREASE_SUSPICION",
-        "INCREASE_STAMINA_WORRY"
+        "INCREASE_SUSPICION"
       ],
       "id": "q8"
     },
     {
-      "text": "You have a suspect in sight and the fate of the spaceship rests on your ability to apprehend them. The clock is ticking and every second counts. Where will you find the supplies you need to confront them?",
-      "visited": ["REPAIR_O2", "FIND_SUSPECT"],
+      "text": "I have just accused someone and I don't feel good. The clock is ticking and every second counts. Where will you find the supplies you need to confront them?",
+      "visited": [
+        "REPAIR_O2",
+        "FIND_SUSPECT"
+      ],
       "optionLabels": [
         "The armory, a heavily guarded room filled with powerful weapons and ammunition. The path to the armory is treacherous, and the player must use their wits to navigate past security measures and guards.",
         "The cafeteria, where the player can stock up on food and water to sustain them during the fight. The cafeteria is a dangerous place, and the player must be on the lookout for any traps or ambushes set by the suspect."
       ],
       "optionActions": [
-        "INCREASE_STAMINA_WORRY",
-        "INCREASE_SUSPICION"
+        "INCREASE_SUSPICION",
+        "INCREASE_STAMINA_WORRY"
       ],
       "id": "q9"
     },
     {
-      "text": "The oxygen system is failing and time is running out. How will you manage your stamina while repairing it?",
-      "visited": ["REPAIR_O2", "ANALYZE_DATA"],
+      "text": "The crew members are very thirsty and everybody needs water. But the cafeteria is fully empty. I wonder if it's the same guy?",
+      "visited": [
+        "REPAIR_O2",
+        "ANALYZE_DATA"
+      ],
       "optionLabels": [
-        "Take breaks periodically to catch your breath and recover stamina. But every moment spent resting is a moment lost, and the lives of your crew hang in the balance.",
-        "Push through and work as quickly as possible, sacrificing your own stamina for speed. The fate of your mission and your team rests on your shoulders, and there's no time to waste."
+        "Go to the captain's chambers to fetch the emergency water supply.",
+        "Check the CCTV footage of the cafeteria."
       ],
       "optionActions": [
-        "INCREASE_HEALTH_WORRY",
+        "INCREASE_STAMINA_WORRY",
         "INCREASE_SUSPICION"
       ],
       "id": "q10"
     },
     {
-      "text": "As you attempt to access the data, you realize that there may be obstacles in your way. What security measures are in place to prevent you from accessing the information you need?",
-      "visited": ["GATHER_SUPPLIES", "FIND_SUSPECT"],
+      "text": "I have just accused someone and I don't feel good. There's very little oxygen left in the tank. I have to do something quickly.",
+      "visited": [
+        "GATHER_SUPPLIES",
+        "FIND_SUSPECT"
+      ],
       "optionLabels": [
-        "Option 1: No, the data is easily accessible. You have a clear path to the information you need, but be wary - sometimes the easiest path can be the most dangerous.",
-        "Option 2: Yes, the data is encrypted and requires a password. You'll need to use your wits to solve a complex puzzle and crack the code before you can access the valuable data."
-
+        "Go to the medical station to get temporary oxygen to extend your life.",
+        "The data is encrypted and requires a password. You'll need to use your wits to solve a complex puzzle and crack the code before you can access the valuable data."
       ],
       "optionActions": [
         "INCREASE_HEALTH_WORRY",
@@ -156,10 +175,13 @@
     },
     {
       "text": "As you struggles to push through the fear and uncertainty of the situation, you desperately search for something to hold onto. Suddenly, a memory comes to mind - a moment of happiness that fills you with strength and hope. Where do you turn to in your mind for this memory?",
-      "visited": ["GATHER_SUPPLIES", "ANALYZE_DATA"],
+      "visited": [
+        "GATHER_SUPPLIES",
+        "ANALYZE_DATA"
+      ],
       "optionLabels": [
         "A memory of a successful mission with her crew, where they worked together seamlessly and accomplished their goal, reminding her of the strength and resilience of her team.",
-        "A childhood memory of playing in the park with her family, surrounded by love and laughter."
+        "Protect the crew members at all costs even if it means confronting one of the crew members."
       ],
       "optionActions": [
         "INCREASE_HEALTH_WORRY",
