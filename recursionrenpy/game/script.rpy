@@ -263,5 +263,5 @@ label DIE:
     with dissolve
     python:
         renpy.set_return_stack([])
-        narrator("Sorry, your mission was unsuccessful and you have failed to accomplish the goals.")
+        narrator("Aaah!! But your health and stamina is too low now. You should have repaired the Oxygen supply quicker.")
     return
