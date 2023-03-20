@@ -13,6 +13,7 @@ define p = Character('Shaw', color="#c8ffc8")
 
 label start:
 
+    play music "audio/intro.mp3"
     scene bg damaged_ship_1
     with fade
 
@@ -237,6 +238,7 @@ label DIE_STAMINA:
     jump DIE
 
 label WIN:
+    stop music fadeout 1.0
     show shaw happy at left
     with dissolve
     python:
@@ -245,6 +247,7 @@ label WIN:
     return
 
 label DIE:
+    stop music fadeout 1.0
     show shaw sad at left
     with dissolve
     python:
