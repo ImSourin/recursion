@@ -5,6 +5,11 @@ The concept of storytelling has held a place of significance among AI researcher
 # Components
 
 **![](https://lh3.googleusercontent.com/aVNLXa2EeT2aGKobtVswuth-DBB3c9837xh51hQA-3d8PG3Yb3afIRIVc29pyxWk5_ntde5alJEVMkSzQC2YV20G0c6Me__Zn_oC7Wf6GpTGLjiO9EV-FwFyZrFbaoJ-eWvxPIIBWq_l)**
+## Running the twine passages of the game
+
+- Go to twine folder
+- Open the html file in browswer
+
 ## How to run
 
 - Install Node v10 and above.
