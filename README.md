@@ -8,7 +8,7 @@ The concept of storytelling has held a place of significance among AI researcher
 ## How to run twine passages
 
 - Go to twine folder
-- Open the html file in browswer
+- Open the html file in browser
 
 ## How to run visual novel 
 
